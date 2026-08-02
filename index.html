@@ -5198,21 +5198,39 @@
         }
 
         // ============================================
-        // MATERI APP (tidak diubah)
+        // MATERI APP — DENGAN LOCALSTORAGE
         // ============================================
         let folders = [];
         let contents = {};
         let currentFolderId = null;
 
+        // ===== SAVE/LOAD MATERI =====
+        function saveMateriData() {
+            localStorage.setItem('materi_folders', JSON.stringify(folders));
+            localStorage.setItem('materi_contents', JSON.stringify(contents));
+        }
+
+        function loadMateriData() {
+            const f = localStorage.getItem('materi_folders');
+            const c = localStorage.getItem('materi_contents');
+            if (f && c) {
+                folders = JSON.parse(f);
+                contents = JSON.parse(c);
+                return true;
+            }
+            return false;
+        }
+
         function initMateriData() {
-            folders = [
-                { id: 'f1', name: 'Algoritma & Struktur Data', tags: ['UTS', '2026'], favorite: false },
-                { id: 'f2', name: 'Pemrograman Web', tags: ['React', 'VS Code'], favorite: false },
-                { id: 'f3', name: 'Basis Data', tags: ['SQL'], favorite: false }
-            ];
-            contents['f1'] = [];
-            contents['f2'] = [];
-            contents['f3'] = [];
+            if (!loadMateriData()) {
+                folders = [
+                    { id: 'f1', name: 'Algoritma & Struktur Data', tags: ['UTS', '2026'], favorite: false },
+                    { id: 'f2', name: 'Pemrograman Web', tags: ['React', 'VS Code'], favorite: false },
+                    { id: 'f3', name: 'Basis Data', tags: ['SQL'], favorite: false }
+                ];
+                contents = { 'f1': [], 'f2': [], 'f3': [] };
+                saveMateriData();
+            }
         }
 
         function loadMateri(el) {
@@ -5300,6 +5318,7 @@
                 `;
             });
             grid.innerHTML = html;
+            saveMateriData();
         }
 
         function renderDetailMateri() {
@@ -5350,6 +5369,7 @@
                 `;
             });
             list.innerHTML = html;
+            saveMateriData();
         }
 
         function openDetailMateri(folderId) {
@@ -5402,6 +5422,7 @@
                     content: desc || '' });
                 renderDetailMateri();
                 closeModal();
+                saveMateriData();
                 return;
             } else if (type === 'editNote') {
                 const item = findContentMateri(targetId);
@@ -5409,10 +5430,12 @@
                     item.content = desc !== undefined ? desc : item.content; }
                 renderDetailMateri();
                 closeModal();
+                saveMateriData();
                 return;
             }
             closeModal();
             renderHomeMateri();
+            saveMateriData();
         }
 
         function editFolderMateri(id) { openFolderModalMateri(id); }
@@ -5423,12 +5446,14 @@
             delete contents[id];
             if (currentFolderId === id) goHomeMateri();
             renderHomeMateri();
+            saveMateriData();
         }
 
         function toggleFavoriteMateri(id) {
             const f = folders.find(f => f.id === id);
             if (f) f.favorite = !f.favorite;
             renderHomeMateri();
+            saveMateriData();
         }
 
         function openTagModalMateri() {
@@ -5438,7 +5463,8 @@
                 if (f) { if (!f.tags) f.tags = [];
                     f.tags.push(tag.trim());
                     renderDetailMateri();
-                    renderHomeMateri(); }
+                    renderHomeMateri();
+                    saveMateriData(); }
             }
         }
 
@@ -5539,6 +5565,7 @@
             if (!confirm('Hapus konten ini?')) return;
             for (const key in contents) contents[key] = contents[key].filter(c => c.id !== itemId);
             renderDetailMateri();
+            saveMateriData();
         }
 
         function handleFileUploadMateri(event) {
@@ -5551,6 +5578,7 @@
                     contents[currentFolderId].push({ id: 'f' + Date.now() + Math.random().toString(36).substr(2, 6),
                         name: file.name, type: 'file', dataUrl: e.target.result, content: '' });
                     renderDetailMateri();
+                    saveMateriData();
                 };
                 reader.readAsDataURL(file);
             }
@@ -5625,7 +5653,7 @@
         }
 
         // ============================================
-        // ENGLISH APP (tidak diubah)
+        // ENGLISH APP — DENGAN LOCALSTORAGE
         // ============================================
         let engAlphabetData = [
             { huruf: 'A', pronounce: 'eɪ', link: 'https://en.wikipedia.org/wiki/A', image: '', note: '', fav: false },
@@ -5678,7 +5706,28 @@
         let engModalCallback = null;
         let engCurrentTab = 'dashboard';
 
+        // ===== SAVE/LOAD ENGLISH =====
+        function engSaveData() {
+            localStorage.setItem('eng_alphabet', JSON.stringify(engAlphabetData));
+            localStorage.setItem('eng_daily', JSON.stringify(engDailyData));
+            localStorage.setItem('eng_vocab', JSON.stringify(engVocabData));
+        }
+
+        function engLoadData() {
+            const a = localStorage.getItem('eng_alphabet');
+            const d = localStorage.getItem('eng_daily');
+            const v = localStorage.getItem('eng_vocab');
+            if (a && d && v) {
+                engAlphabetData = JSON.parse(a);
+                engDailyData = JSON.parse(d);
+                engVocabData = JSON.parse(v);
+                return true;
+            }
+            return false;
+        }
+
         function loadEnglish(el) {
+            engLoadData();
             el.innerHTML = `
                 <div class="eng-wrap">
                     <div class="eng-header">
@@ -5846,6 +5895,7 @@
             }
             engUpdateDashboard();
             if (engShowFav) engRenderFavorites();
+            engSaveData();
         }
 
         function toggleEngFav() {
@@ -5896,6 +5946,7 @@
                 engRenderVocab(); }
             engUpdateDashboard();
             engRenderFavorites();
+            engSaveData();
         }
 
         function engSearchAlphabet() {
@@ -5992,6 +6043,7 @@
             });
             engSearchAlphabet();
             engUpdateDashboard();
+            engSaveData();
         }
 
         function engTambahAlphabet() {
@@ -6013,6 +6065,7 @@
                     document.getElementById('engNewPronounce').value = '';
                     document.getElementById('engNewLink').value = '';
                     document.getElementById('engNewImage').value = '';
+                    engSaveData();
                 };
                 reader.readAsDataURL(fileInput.files[0]);
             } else {
@@ -6022,6 +6075,7 @@
                 document.getElementById('engNewPronounce').value = '';
                 document.getElementById('engNewLink').value = '';
                 document.getElementById('engNewImage').value = '';
+                engSaveData();
             }
         }
 
@@ -6029,6 +6083,7 @@
             if (confirm(`Hapus huruf "${engAlphabetData[idx].huruf}"?`)) {
                 engAlphabetData.splice(idx, 1);
                 engRenderAlphabet();
+                engSaveData();
             }
         }
 
@@ -6044,6 +6099,7 @@
                     engAlphabetData[idx].pronounce = data.pronounce.trim();
                     engAlphabetData[idx].link = data.link.trim();
                     engRenderAlphabet();
+                    engSaveData();
                 } else alert('Huruf tidak boleh kosong!');
             });
         }
@@ -6056,6 +6112,7 @@
             ], function(data) {
                 engAlphabetData[idx].note = data.note.trim();
                 engRenderAlphabet();
+                engSaveData();
             });
         }
 
@@ -6065,6 +6122,7 @@
                 reader.onload = function(e) {
                     engAlphabetData[idx].image = e.target.result;
                     engRenderAlphabet();
+                    engSaveData();
                 };
                 reader.readAsDataURL(input.files[0]);
             }
@@ -6099,6 +6157,7 @@
             });
             engSearchDaily();
             engUpdateDashboard();
+            engSaveData();
         }
 
         function engTambahDaily() {
@@ -6113,12 +6172,14 @@
             document.getElementById('engDailyCara').value = '';
             document.getElementById('engDailyArt').value = '';
             document.getElementById('engDailyLink').value = '';
+            engSaveData();
         }
 
         function engHapusDaily(idx) {
             if (confirm('Hapus percakapan ini?')) {
                 engDailyData.splice(idx, 1);
                 engRenderDaily();
+                engSaveData();
             }
         }
 
@@ -6136,6 +6197,7 @@
                     engDailyData[idx].arti = data.arti.trim();
                     engDailyData[idx].link = data.link.trim();
                     engRenderDaily();
+                    engSaveData();
                 } else alert('Tulisan Inggris dan Arti wajib diisi!');
             });
         }
@@ -6148,6 +6210,7 @@
             ], function(data) {
                 engDailyData[idx].note = data.note.trim();
                 engRenderDaily();
+                engSaveData();
             });
         }
 
@@ -6171,6 +6234,7 @@
             });
             engSearchVocab();
             engUpdateDashboard();
+            engSaveData();
         }
 
         function engTambahVocab() {
@@ -6183,12 +6247,14 @@
             document.getElementById('engVocabEn').value = '';
             document.getElementById('engVocabId').value = '';
             document.getElementById('engVocabPronounce').value = '';
+            engSaveData();
         }
 
         function engHapusVocab(idx) {
             if (confirm(`Hapus kosakata "${engVocabData[idx].en}"?`)) {
                 engVocabData.splice(idx, 1);
                 engRenderVocab();
+                engSaveData();
             }
         }
 
@@ -6204,6 +6270,7 @@
                     engVocabData[idx].id = data.id.trim();
                     engVocabData[idx].pronounce = data.pronounce.trim() || '-';
                     engRenderVocab();
+                    engSaveData();
                 } else alert('Kata Inggris dan Arti wajib diisi!');
             });
         }
@@ -7294,7 +7361,7 @@
         }
 
         // ============================================
-        // BOOK COLLECTION APP — FIXED VERSION
+        // BOOK COLLECTION APP — FIXED VERSION (tidak diubah, sudah pakai localStorage)
         // ============================================
         function loadBookCollection(el) {
             let bcBooks = [];
@@ -7475,7 +7542,6 @@
                     `;
                 }).join('');
 
-                // Attach event listeners using delegation on the grid
                 grid.querySelectorAll('.bc-fav-star').forEach(btn => {
                     btn.addEventListener('click', (e) => {
                         e.stopPropagation();
@@ -8088,7 +8154,6 @@
             // --- Build the HTML ---
             bcLoadData();
 
-            // IMPORTANT: Use the el parameter to set innerHTML
             el.innerHTML = `
                 <div class="book-collection-app" id="bcApp">
                     <div class="bc-container">
@@ -8279,7 +8344,6 @@
             `;
 
             // --- Bind events ---
-            // Search
             const searchInput = document.getElementById('bcSearchInput');
             const clearSearch = document.getElementById('bcClearSearch');
             if (searchInput) {
@@ -8299,7 +8363,6 @@
                 });
             }
 
-            // Filter
             const filterBar = document.getElementById('bcFilterBar');
             if (filterBar) {
                 filterBar.addEventListener('click', (e) => {
@@ -8314,14 +8377,12 @@
                 });
             }
 
-            // Buttons
             const btnTambah = document.getElementById('bcBtnTambahBuku');
             if (btnTambah) btnTambah.addEventListener('click', () => bcOpenForm(null, 'fisik'));
 
             const btnUpload = document.getElementById('bcBtnUploadEBook');
             if (btnUpload) btnUpload.addEventListener('click', () => bcOpenForm(null, 'digital'));
 
-            // Form close
             const formClose = document.getElementById('bcModalFormClose');
             if (formClose) formClose.addEventListener('click', bcCloseForm);
             const formOverlay = document.querySelector('.bc-modal-overlay.bc-form-modal');
@@ -8331,7 +8392,6 @@
                 });
             }
 
-            // Detail close
             const detailClose = document.getElementById('bcModalDetailClose');
             if (detailClose) detailClose.addEventListener('click', bcCloseDetail);
             const detailOverlay = document.querySelector('.bc-modal-overlay.bc-detail-modal');
@@ -8341,7 +8401,6 @@
                 });
             }
 
-            // Type toggle
             const typeToggle = document.getElementById('bcTypeToggle');
             if (typeToggle) {
                 typeToggle.querySelectorAll('.bc-toggle-btn').forEach(btn => {
@@ -8361,7 +8420,6 @@
                 });
             }
 
-            // Rating stars
             const ratingStars = document.getElementById('bcRatingStars');
             if (ratingStars) {
                 ratingStars.querySelectorAll('.bc-star').forEach(star => {
@@ -8377,7 +8435,6 @@
                 });
             }
 
-            // Cover upload
             const coverFile = document.getElementById('bcFCoverFile');
             if (coverFile) {
                 coverFile.addEventListener('change', function() {
@@ -8409,7 +8466,6 @@
                 });
             }
 
-            // PDF upload
             const pdfFile = document.getElementById('bcFPdfFile');
             if (pdfFile) {
                 pdfFile.addEventListener('change', function() {
@@ -8449,7 +8505,6 @@
                 });
             }
 
-            // Add category
             const btnAddCat = document.getElementById('bcBtnAddCategory');
             if (btnAddCat) {
                 btnAddCat.addEventListener('click', () => {
@@ -8469,7 +8524,6 @@
                 });
             }
 
-            // Form submit
             const form = document.getElementById('bcBookForm');
             if (form) {
                 form.addEventListener('submit', async (e) => {
@@ -8517,18 +8571,14 @@
                 });
             }
 
-            // --- Initial render ---
             bcRender();
 
-            // Expose for debugging
             window.bcOpenForm = bcOpenForm;
             window.bcCloseForm = bcCloseForm;
             window.bcOpenDetail = bcOpenDetail;
             window.bcCloseDetail = bcCloseDetail;
             window.bcRender = bcRender;
             window.bcShowToast = bcShowToast;
-
-            console.log('📚 Book Collection siap!');
         }
 
         // ============================================
@@ -8543,7 +8593,7 @@
             }
         });
 
-        console.log('Portal Belajar siap dengan 4 fitur!');
+        console.log('Portal Belajar siap — semua data tersimpan di localStorage!');
     </script>
 </body>
 </html>
