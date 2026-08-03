@@ -372,6 +372,53 @@
             background: rgba(231, 76, 60, 0.2);
         }
 
+        /* Tombol Backup & Restore di menu utama */
+        .backup-restore-bar {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            margin-top: 2.5rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid rgba(26, 95, 139, 0.08);
+        }
+        .backup-restore-bar button {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: 'Inter', sans-serif;
+        }
+        .backup-restore-bar .btn-backup {
+            background: #1a5f8b;
+            color: white;
+            box-shadow: 0 8px 16px -6px #1a5f8b60;
+        }
+        .backup-restore-bar .btn-backup:hover {
+            background: #0f4a70;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px -8px #1a5f8b80;
+        }
+        .backup-restore-bar .btn-restore {
+            background: #b87333;
+            color: white;
+            box-shadow: 0 8px 16px -6px #b8733360;
+        }
+        .backup-restore-bar .btn-restore:hover {
+            background: #9a6229;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px -8px #b8733380;
+        }
+        .backup-restore-bar input[type="file"] {
+            display: none;
+        }
+
         @media (max-width:768px) {
             .main-container {
                 padding: 1.8rem 1.5rem;
@@ -382,6 +429,13 @@
             .menu-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
+            }
+            .backup-restore-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .backup-restore-bar button {
+                justify-content: center;
             }
         }
 
@@ -5095,6 +5149,12 @@
                     <div class="menu-desc">Kelola koleksi buku fisik & digital</div>
                 </div>
             </div>
+            <!-- TOMBOL BACKUP & RESTORE -->
+            <div class="backup-restore-bar">
+                <button class="btn-backup" onclick="backupData()"><i class="fas fa-download"></i> Backup Semua Data</button>
+                <button class="btn-restore" onclick="document.getElementById('restoreInput').click()"><i class="fas fa-upload"></i> Restore Data</button>
+                <input type="file" id="restoreInput" accept=".json" onchange="restoreData(event)" />
+            </div>
         </div>
 
         <!-- APP CONTAINER -->
@@ -5161,6 +5221,7 @@
         // NAVIGASI UTAMA
         // ============================================
         function openApp(app) {
+            localStorage.setItem('lastApp', app); // simpan aplikasi terakhir
             document.getElementById('mainMenu').style.display = 'none';
             const container = document.getElementById('appContainer');
             container.classList.add('show');
@@ -5186,6 +5247,7 @@
         }
 
         function goHome() {
+            localStorage.removeItem('lastApp');
             document.getElementById('mainMenu').style.display = 'block';
             const container = document.getElementById('appContainer');
             container.classList.remove('show');
@@ -6323,7 +6385,7 @@
         }
 
         // ============================================
-        // PEDOMAN HIDUP APP — FULL STANDALONE (tidak diubah)
+        // PEDOMAN HIDUP APP — SUDAH DIPERBAIKI
         // ============================================
         let pedomanState = { folders: {} };
         let currentPedomanFolderId = null;
@@ -6331,6 +6393,10 @@
         let pedomanSearchQuery = '';
 
         function loadPedoman(el) {
+            // *** PERBAIKAN: Muat data dari localStorage dulu ***
+            loadPedomanState();
+
+            // Baru kemudian jika benar-benar kosong, buat default
             if (Object.keys(pedomanState.folders).length === 0) {
                 const id = generatePedomanId();
                 pedomanState.folders[id] = {
@@ -8582,6 +8648,56 @@
         }
 
         // ============================================
+        // BACKUP & RESTORE SEMUA DATA
+        // ============================================
+        function backupData() {
+            const data = {
+                materi_folders: localStorage.getItem('materi_folders'),
+                materi_contents: localStorage.getItem('materi_contents'),
+                eng_alphabet: localStorage.getItem('eng_alphabet'),
+                eng_daily: localStorage.getItem('eng_daily'),
+                eng_vocab: localStorage.getItem('eng_vocab'),
+                pedoman_hidup_data: localStorage.getItem('pedoman_hidup_data'),
+                bookCollection: localStorage.getItem('bookCollection'),
+                bookCategories: localStorage.getItem('bookCategories'),
+                timestamp: new Date().toISOString()
+            };
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `portal_belajar_backup_${new Date().toISOString().slice(0,10)}.json`;
+            link.click();
+            URL.revokeObjectURL(link.href);
+            alert('✅ Data berhasil di-backup!');
+        }
+
+        function restoreData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    let count = 0;
+                    if (data.materi_folders) { localStorage.setItem('materi_folders', data.materi_folders); count++; }
+                    if (data.materi_contents) { localStorage.setItem('materi_contents', data.materi_contents); count++; }
+                    if (data.eng_alphabet) { localStorage.setItem('eng_alphabet', data.eng_alphabet); count++; }
+                    if (data.eng_daily) { localStorage.setItem('eng_daily', data.eng_daily); count++; }
+                    if (data.eng_vocab) { localStorage.setItem('eng_vocab', data.eng_vocab); count++; }
+                    if (data.pedoman_hidup_data) { localStorage.setItem('pedoman_hidup_data', data.pedoman_hidup_data); count++; }
+                    if (data.bookCollection) { localStorage.setItem('bookCollection', data.bookCollection); count++; }
+                    if (data.bookCategories) { localStorage.setItem('bookCategories', data.bookCategories); count++; }
+                    alert(`✅ Restore berhasil! ${count} data dimuat. Halaman akan refresh.`);
+                    location.reload();
+                } catch(err) {
+                    alert('❌ File tidak valid! Pastikan file backup dari web ini.');
+                }
+            };
+            reader.readAsText(file);
+            event.target.value = '';
+        }
+
+        // ============================================
         // KEYBOARD SHORTCUTS (global)
         // ============================================
         document.addEventListener('keydown', function(e) {
@@ -8590,6 +8706,19 @@
                 closeModal();
                 closeEngModal();
                 closePedomanModal();
+            }
+        });
+
+        // ============================================
+        // AUTO-RESTORE APLIKASI TERAKHIR SAAT REFRESH
+        // ============================================
+        window.addEventListener('load', function() {
+            const lastApp = localStorage.getItem('lastApp');
+            if (lastApp && ['materi', 'english', 'pedoman', 'bookcollection'].includes(lastApp)) {
+                // beri jeda agar DOM siap
+                setTimeout(() => {
+                    openApp(lastApp);
+                }, 300);
             }
         });
 
