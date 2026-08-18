@@ -3465,7 +3465,7 @@
         }
 
         // ============================================
-        // MATERI APP — DENGAN LOCALSTORAGE (PERSIS KODE ASLI)
+        // MATERI APP — DENGAN LOCALSTORAGE
         // ============================================
         let folders = [];
         let contents = {};
@@ -3473,17 +3473,25 @@
 
         // ===== SAVE/LOAD MATERI =====
         function saveMateriData() {
-            localStorage.setItem('materi_folders', JSON.stringify(folders));
-            localStorage.setItem('materi_contents', JSON.stringify(contents));
+            try {
+                localStorage.setItem('materi_folders', JSON.stringify(folders));
+                localStorage.setItem('materi_contents', JSON.stringify(contents));
+                return true;
+            } catch (e) {
+                alert('⚠️ Gagal menyimpan data: ' + e.message + '\n\nFile mungkin terlalu besar. Batas penyimpanan browser sekitar 5-10 MB. Coba gunakan file yang lebih kecil.');
+                return false;
+            }
         }
 
         function loadMateriData() {
             const f = localStorage.getItem('materi_folders');
             const c = localStorage.getItem('materi_contents');
             if (f && c) {
-                folders = JSON.parse(f);
-                contents = JSON.parse(c);
-                return true;
+                try {
+                    folders = JSON.parse(f);
+                    contents = JSON.parse(c);
+                    return true;
+                } catch (_) { return false; }
             }
             return false;
         }
@@ -3835,21 +3843,46 @@
             saveMateriData();
         }
 
+        // ===== PERBAIKAN UTAMA: handleFileUploadMateri =====
         function handleFileUploadMateri(event) {
             const files = event.target.files;
-            if (!files.length || !currentFolderId) { if (!currentFolderId) alert('Pilih folder terlebih dahulu'); return; }
+            if (!files.length || !currentFolderId) {
+                if (!currentFolderId) alert('Pilih folder terlebih dahulu');
+                return;
+            }
             if (!contents[currentFolderId]) contents[currentFolderId] = [];
+
+            let loaded = 0;
+            const total = files.length;
+
             for (const file of files) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    contents[currentFolderId].push({ id: 'f' + Date.now() + Math.random().toString(36).substr(2, 6),
-                        name: file.name, type: 'file', dataUrl: e.target.result, content: '' });
-                    renderDetailMateri();
-                    saveMateriData();
+                    contents[currentFolderId].push({
+                        id: 'f' + Date.now() + Math.random().toString(36).substr(2, 6),
+                        name: file.name,
+                        type: 'file',
+                        dataUrl: e.target.result,
+                        content: ''
+                    });
+                    loaded++;
+                    if (loaded === total) {
+                        // Semua file selesai dibaca, render dan simpan
+                        renderDetailMateri();
+                        const saved = saveMateriData();
+                        if (saved) {
+                            alert('✅ ' + total + ' file berhasil diupload dan disimpan!');
+                        } else {
+                            alert('⚠️ File terbaca, tetapi GAGAL disimpan ke browser. Kemungkinan ukuran total terlalu besar. Coba upload satu per satu atau gunakan file yang lebih kecil.');
+                        }
+                    }
+                };
+                reader.onerror = function() {
+                    alert('❌ Gagal membaca file: ' + file.name);
                 };
                 reader.readAsDataURL(file);
             }
-            event.target.value = '';
+            event.target.value = ''; // reset input
         }
 
         function openNoteModalMateri() {
