@@ -42,12 +42,6 @@
         body.pedoman-mode::before {
             display: none;
         }
-        body.book-collection-mode {
-            background: #f6f2ed;
-            background-image:
-                radial-gradient(ellipse at 20% 50%, rgba(232, 184, 109, 0.06) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 20%, rgba(184, 115, 51, 0.04) 0%, transparent 50%);
-        }
 
         .main-wrapper {
             max-width: 1200px;
@@ -84,14 +78,6 @@
             padding: 0 !important;
             border-radius: 0 !important;
         }
-        body.book-collection-mode .main-container {
-            background: transparent !important;
-            backdrop-filter: none !important;
-            border: none !important;
-            box-shadow: none !important;
-            padding: 0 !important;
-            border-radius: 0 !important;
-        }
 
         .main-title {
             font-weight: 700;
@@ -112,11 +98,6 @@
             -webkit-text-fill-color: transparent;
             text-shadow: 0 0 40px rgba(108, 60, 225, 0.2);
         }
-        body.book-collection-mode .main-title {
-            background: linear-gradient(145deg, #3d3228, #7a6250);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
         .main-subtitle {
             color: #6b93b3;
             font-size: 1.1rem;
@@ -127,9 +108,6 @@
         }
         body.pedoman-mode .main-subtitle {
             color: rgba(196, 181, 253, 0.4);
-        }
-        body.book-collection-mode .main-subtitle {
-            color: #a19587;
         }
         .menu-grid {
             display: grid;
@@ -164,15 +142,6 @@
             border-color: rgba(108, 60, 225, 0.3);
             box-shadow: 0 18px 35px -14px rgba(108, 60, 225, 0.1);
         }
-        body.book-collection-mode .menu-card {
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(200, 200, 200, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
-        }
-        body.book-collection-mode .menu-card:hover {
-            border-color: #b87333;
-            box-shadow: 0 18px 35px -14px rgba(184, 115, 51, 0.15);
-        }
         .menu-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 18px 35px -14px #1a5f8b30;
@@ -204,10 +173,6 @@
             background: rgba(108, 60, 225, 0.08);
             color: #8B5CF6;
         }
-        body.book-collection-mode .menu-icon.materi {
-            background: rgba(43, 123, 176, 0.1);
-            color: #2b7bb0;
-        }
         .menu-icon.english {
             color: #e74c3c;
             background: rgba(231, 76, 60, 0.1);
@@ -230,10 +195,6 @@
             background: rgba(108, 60, 225, 0.08);
             color: #8B5CF6;
         }
-        body.book-collection-mode .menu-icon.english {
-            background: rgba(231, 76, 60, 0.1);
-            color: #e74c3c;
-        }
         .menu-icon.pedoman {
             color: #8B5CF6;
             background: rgba(108, 60, 225, 0.12);
@@ -253,37 +214,6 @@
             color: #c4b5fd;
             box-shadow: 0 0 30px rgba(108, 60, 225, 0.1);
         }
-        body.book-collection-mode .menu-icon.pedoman {
-            background: rgba(108, 60, 225, 0.12);
-            color: #8B5CF6;
-        }
-        .menu-icon.bookcollection {
-            color: #b87333;
-            background: rgba(184, 115, 51, 0.12);
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin: 0 auto 0.8rem auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .menu-icon.bookcollection i {
-            font-size: 2.8rem;
-        }
-        body.book-collection-mode .menu-icon.bookcollection {
-            background: rgba(184, 115, 51, 0.15);
-            color: #b87333;
-            box-shadow: 0 0 30px rgba(184, 115, 51, 0.08);
-        }
-        body.english-mode .menu-icon.bookcollection {
-            background: rgba(184, 115, 51, 0.1);
-            color: #b87333;
-        }
-        body.pedoman-mode .menu-icon.bookcollection {
-            background: rgba(108, 60, 225, 0.08);
-            color: #8B5CF6;
-        }
         .menu-name {
             font-weight: 700;
             font-size: 1.2rem;
@@ -299,9 +229,6 @@
         body.pedoman-mode .menu-name {
             color: #c4b5fd;
         }
-        body.book-collection-mode .menu-name {
-            color: #2c241b;
-        }
         .menu-desc {
             color: #6b93b3;
             font-size: 0.85rem;
@@ -314,9 +241,6 @@
         }
         body.pedoman-mode .menu-desc {
             color: rgba(196, 181, 253, 0.4);
-        }
-        body.book-collection-mode .menu-desc {
-            color: #6b5f53;
         }
         #appContainer {
             display: none;
@@ -357,13 +281,6 @@
         }
         body.pedoman-mode .btn-back-home:hover {
             background: rgba(108, 60, 225, 0.4);
-        }
-        body.book-collection-mode .btn-back-home {
-            background: rgba(184, 115, 51, 0.1);
-            color: #b87333;
-        }
-        body.book-collection-mode .btn-back-home:hover {
-            background: rgba(184, 115, 51, 0.2);
         }
         .btn-back-home:hover {
             background: rgba(26, 95, 139, 0.2);
@@ -439,1512 +356,7 @@
             }
         }
 
-        /* ================================================================
-           BOOK COLLECTION — STYLE (di-scope dengan .book-collection-app)
-           ================================================================ */
-        .book-collection-app {
-            --bc-bg: #f6f2ed;
-            --bc-surface: #ffffff;
-            --bc-surface-hover: #fcf9f6;
-            --bc-text: #2c241b;
-            --bc-text-secondary: #6b5f53;
-            --bc-text-muted: #a19587;
-            --bc-border: #e5ddd4;
-            --bc-shadow-sm: 0 4px 16px rgba(44, 36, 27, 0.06);
-            --bc-shadow-md: 0 12px 40px rgba(44, 36, 27, 0.10);
-            --bc-shadow-lg: 0 24px 64px rgba(44, 36, 27, 0.14);
-            --bc-radius: 24px;
-            --bc-radius-sm: 14px;
-            --bc-accent: #b87333;
-            --bc-gold: #e8b86d;
-            --bc-green: #4caf84;
-            --bc-green-bg: #e6f5ef;
-            --bc-orange: #f5a623;
-            --bc-orange-bg: #fdf0dd;
-            --bc-blue: #5b8cbf;
-            --bc-blue-bg: #e6eef7;
-            --bc-red: #e74c3c;
-            --bc-red-bg: #fde8e5;
-            --bc-purple: #8e6aaa;
-            --bc-purple-bg: #f0eaf5;
-            --bc-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-family: 'Outfit', sans-serif;
-            color: var(--bc-text);
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 4px 20px;
-            position: relative;
-            z-index: 1;
-            background: var(--bc-bg);
-            border-radius: 48px;
-            padding: 24px 28px 32px;
-            background-image:
-                radial-gradient(ellipse at 20% 50%, rgba(232, 184, 109, 0.06) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 20%, rgba(184, 115, 51, 0.04) 0%, transparent 50%);
-        }
-        .book-collection-app .bc-container {
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-        .book-collection-app ::-webkit-scrollbar {
-            width: 6px;
-        }
-        .book-collection-app ::-webkit-scrollbar-track {
-            background: #f0ebe4;
-            border-radius: 10px;
-        }
-        .book-collection-app ::-webkit-scrollbar-thumb {
-            background: #d6cdc0;
-            border-radius: 10px;
-        }
-        .book-collection-app ::-webkit-scrollbar-thumb:hover {
-            background: #c0b4a5;
-        }
-
-        /* HEADER */
-        .book-collection-app .bc-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 14px;
-            margin-bottom: 28px;
-            padding: 16px 0 8px;
-            border-bottom: 2px solid var(--bc-border);
-        }
-        .book-collection-app .bc-header-left {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-        .book-collection-app .bc-header-left .bc-logo-icon {
-            font-size: 2.6rem;
-            line-height: 1;
-            filter: drop-shadow(0 2px 8px rgba(184, 115, 51, 0.15));
-            animation: bcLogoFloat 3s ease-in-out infinite;
-        }
-        @keyframes bcLogoFloat {
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-4px);
-            }
-        }
-        .book-collection-app .bc-header-left h1 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-            font-size: 2.2rem;
-            letter-spacing: -0.5px;
-            background: linear-gradient(145deg, #3d3228, #7a6250);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .book-collection-app .bc-header-left .bc-sub {
-            font-size: 0.95rem;
-            color: var(--bc-text-secondary);
-            margin-top: 2px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .book-collection-app .bc-header-left .bc-count-badge {
-            background: var(--bc-text);
-            color: #fff;
-            font-size: 0.7rem;
-            font-weight: 600;
-            padding: 2px 14px;
-            border-radius: 60px;
-            -webkit-text-fill-color: #fff;
-        }
-        .book-collection-app .bc-header-actions {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .book-collection-app .bc-btn-primary {
-            background: var(--bc-text);
-            color: #fff;
-            border: none;
-            padding: 12px 28px;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: var(--bc-transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: var(--bc-shadow-sm);
-            font-family: 'Outfit', sans-serif;
-        }
-        .book-collection-app .bc-btn-primary:hover {
-            background: #4a3d31;
-            transform: translateY(-3px);
-            box-shadow: var(--bc-shadow-md);
-        }
-        .book-collection-app .bc-btn-primary:active {
-            transform: scale(0.96);
-        }
-        .book-collection-app .bc-btn-primary.bc-btn-digital {
-            background: linear-gradient(135deg, #7a4a9a, #9a6aba);
-        }
-        .book-collection-app .bc-btn-primary.bc-btn-digital:hover {
-            background: linear-gradient(135deg, #6a3a8a, #8a5aaa);
-        }
-        .book-collection-app .bc-btn-outline {
-            background: transparent;
-            border: 1.5px solid var(--bc-border);
-            padding: 10px 20px;
-            border-radius: 60px;
-            font-weight: 500;
-            color: var(--bc-text-secondary);
-            cursor: pointer;
-            transition: var(--bc-transition);
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-family: 'Outfit', sans-serif;
-        }
-        .book-collection-app .bc-btn-outline:hover {
-            border-color: var(--bc-text);
-            color: var(--bc-text);
-            background: var(--bc-surface);
-            transform: translateY(-2px);
-        }
-        .book-collection-app .bc-btn-danger {
-            background: var(--bc-red);
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: var(--bc-transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: var(--bc-shadow-sm);
-            font-family: 'Outfit', sans-serif;
-        }
-        .book-collection-app .bc-btn-danger:hover {
-            background: #c0392b;
-            transform: translateY(-2px);
-            box-shadow: var(--bc-shadow-md);
-        }
-
-        /* SEARCH */
-        .book-collection-app .bc-search-section {
-            margin-bottom: 24px;
-        }
-        .book-collection-app .bc-search-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            background: var(--bc-surface);
-            padding: 8px 20px 8px 24px;
-            border-radius: 60px;
-            border: 1.5px solid var(--bc-border);
-            transition: var(--bc-transition);
-            box-shadow: var(--bc-shadow-sm);
-            max-width: 480px;
-        }
-        .book-collection-app .bc-search-wrapper:focus-within {
-            border-color: var(--bc-accent);
-            box-shadow: 0 0 0 4px rgba(184, 115, 51, 0.08), var(--bc-shadow-sm);
-        }
-        .book-collection-app .bc-search-wrapper .bc-search-icon {
-            font-size: 1.2rem;
-            color: var(--bc-text-muted);
-        }
-        .book-collection-app .bc-search-wrapper input {
-            flex: 1;
-            border: none;
-            padding: 12px 0;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.95rem;
-            background: transparent;
-            color: var(--bc-text);
-            outline: none;
-        }
-        .book-collection-app .bc-search-wrapper input::placeholder {
-            color: var(--bc-text-muted);
-        }
-        .book-collection-app .bc-search-wrapper .bc-clear-search {
-            background: none;
-            border: none;
-            font-size: 1.2rem;
-            cursor: pointer;
-            color: var(--bc-text-muted);
-            padding: 4px 8px;
-            border-radius: 50%;
-            transition: var(--bc-transition);
-            display: none;
-        }
-        .book-collection-app .bc-search-wrapper .bc-clear-search.visible {
-            display: block;
-        }
-        .book-collection-app .bc-search-wrapper .bc-clear-search:hover {
-            background: var(--bc-bg);
-            color: var(--bc-text);
-        }
-
-        /* CATEGORY */
-        .book-collection-app .bc-category-section {
-            margin-bottom: 28px;
-        }
-        .book-collection-app .bc-category-scroll {
-            display: flex;
-            gap: 12px;
-            overflow-x: auto;
-            padding: 4px 2px 14px;
-            scrollbar-width: thin;
-            -webkit-overflow-scrolling: touch;
-        }
-        .book-collection-app .bc-category-scroll::-webkit-scrollbar {
-            height: 4px;
-        }
-        .book-collection-app .bc-category-scroll::-webkit-scrollbar-thumb {
-            background: #d6cdc0;
-            border-radius: 10px;
-        }
-        .book-collection-app .bc-cat-btn {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 24px;
-            border-radius: 60px;
-            border: none;
-            background: var(--bc-surface);
-            color: var(--bc-text-secondary);
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: var(--bc-transition);
-            white-space: nowrap;
-            flex-shrink: 0;
-            box-shadow: var(--bc-shadow-sm);
-            border: 1.5px solid transparent;
-            font-family: 'Outfit', sans-serif;
-        }
-        .book-collection-app .bc-cat-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--bc-shadow-md);
-            border-color: var(--bc-border);
-        }
-        .book-collection-app .bc-cat-btn.active {
-            background: linear-gradient(135deg, #3d3228, #5a4a3a);
-            color: #fff;
-            border-color: #3d3228;
-            box-shadow: 0 8px 24px rgba(44, 36, 27, 0.25);
-        }
-        .book-collection-app .bc-cat-btn .bc-folder-icon {
-            font-size: 1.4rem;
-            line-height: 1;
-        }
-        .book-collection-app .bc-cat-btn .bc-cat-count {
-            background: rgba(0, 0, 0, 0.06);
-            padding: 0 12px;
-            border-radius: 60px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: var(--bc-text-muted);
-            transition: var(--bc-transition);
-        }
-        .book-collection-app .bc-cat-btn.active .bc-cat-count {
-            background: rgba(255, 255, 255, 0.18);
-            color: #fff;
-        }
-        .book-collection-app .bc-cat-btn.bc-add-cat {
-            border: 2px dashed var(--bc-border);
-            background: transparent;
-            color: var(--bc-text-muted);
-            box-shadow: none;
-        }
-        .book-collection-app .bc-cat-btn.bc-add-cat:hover {
-            border-color: var(--bc-accent);
-            color: var(--bc-accent);
-            background: rgba(184, 115, 51, 0.05);
-            transform: translateY(-4px);
-        }
-        .book-collection-app .bc-cat-btn .bc-del-cat {
-            background: none;
-            border: none;
-            font-size: 0.9rem;
-            color: var(--bc-text-muted);
-            cursor: pointer;
-            padding: 0 6px;
-            transition: var(--bc-transition);
-            border-radius: 50%;
-            line-height: 1;
-            margin-left: 2px;
-            font-family: 'Outfit', sans-serif;
-        }
-        .book-collection-app .bc-cat-btn .bc-del-cat:hover {
-            color: #c0392b;
-            transform: scale(1.3);
-            background: rgba(192, 57, 43, 0.08);
-        }
-        .book-collection-app .bc-cat-btn.active .bc-del-cat {
-            color: rgba(255, 255, 255, 0.5);
-        }
-        .book-collection-app .bc-cat-btn.active .bc-del-cat:hover {
-            color: #fff;
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        /* FILTER */
-        .book-collection-app .bc-filter-bar {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 36px;
-            padding: 6px 0;
-        }
-        .book-collection-app .bc-filter-btn {
-            background: var(--bc-surface);
-            border: 1.5px solid var(--bc-border);
-            padding: 10px 24px;
-            border-radius: 60px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--bc-text-secondary);
-            cursor: pointer;
-            transition: var(--bc-transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: var(--bc-shadow-sm);
-            font-family: 'Outfit', sans-serif;
-        }
-        .book-collection-app .bc-filter-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--bc-shadow-md);
-            border-color: var(--bc-text);
-            color: var(--bc-text);
-        }
-        .book-collection-app .bc-filter-btn.active {
-            background: var(--bc-text);
-            color: #fff;
-            border-color: var(--bc-text);
-            box-shadow: 0 6px 20px rgba(44, 36, 27, 0.2);
-        }
-        .book-collection-app .bc-filter-btn[data-filter="favorit"].active {
-            background: linear-gradient(135deg, #e8b86d, #d4a04a);
-            border-color: #d4a04a;
-            box-shadow: 0 6px 20px rgba(232, 184, 109, 0.35);
-        }
-        .book-collection-app .bc-filter-btn[data-filter="selesai"].active {
-            background: linear-gradient(135deg, #4caf84, #3d9d74);
-            border-color: #3d9d74;
-            box-shadow: 0 6px 20px rgba(76, 175, 132, 0.35);
-        }
-        .book-collection-app .bc-filter-btn[data-filter="sedang"].active {
-            background: linear-gradient(135deg, #f5a623, #e0961a);
-            border-color: #e0961a;
-            box-shadow: 0 6px 20px rgba(245, 166, 35, 0.35);
-        }
-        .book-collection-app .bc-filter-btn[data-filter="ingin"].active {
-            background: linear-gradient(135deg, #7a9bcb, #5b8cbf);
-            border-color: #5b8cbf;
-            box-shadow: 0 6px 20px rgba(91, 140, 191, 0.35);
-        }
-        .book-collection-app .bc-filter-btn[data-filter="digital"].active {
-            background: linear-gradient(135deg, #8e6aaa, #aa8aca);
-            border-color: #8e6aaa;
-            box-shadow: 0 6px 20px rgba(142, 106, 170, 0.35);
-        }
-        .book-collection-app .bc-filter-btn .bc-f-icon {
-            font-size: 1.2rem;
-        }
-
-        /* GRID */
-        .book-collection-app .bc-book-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 28px;
-        }
-
-        /* CARD */
-        .book-collection-app .bc-book-card {
-            background: var(--bc-surface);
-            border-radius: var(--bc-radius);
-            padding: 20px 18px 18px;
-            box-shadow: var(--bc-shadow-sm);
-            transition: var(--bc-transition);
-            border: 1px solid var(--bc-border);
-            cursor: pointer;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-        .book-collection-app .bc-book-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--bc-shadow-md);
-            border-color: #cdc1b4;
-        }
-        .book-collection-app .bc-book-card.is-digital {
-            border-color: #c8b0d8;
-            background: linear-gradient(145deg, #ffffff, #faf5ff);
-        }
-        .book-collection-app .bc-book-card .bc-card-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 8px;
-        }
-        .book-collection-app .bc-book-card .bc-card-category {
-            font-size: 0.6rem;
-            font-weight: 700;
-            color: var(--bc-text-secondary);
-            background: var(--bc-bg);
-            padding: 3px 14px;
-            border-radius: 60px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border: 1px solid var(--bc-border);
-        }
-        .book-collection-app .bc-book-card .bc-card-badge-digital {
-            font-size: 0.55rem;
-            font-weight: 700;
-            background: var(--bc-purple-bg);
-            color: var(--bc-purple);
-            padding: 2px 12px;
-            border-radius: 60px;
-            border: 1px solid #d8c8e8;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .book-collection-app .bc-book-cover {
-            width: 100%;
-            aspect-ratio: 2/3;
-            background: #ede8e1;
-            border-radius: var(--bc-radius-sm);
-            margin-bottom: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.6rem;
-            color: #c7b9ab;
-            overflow: hidden;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: #ede8e1;
-            position: relative;
-            transition: var(--bc-transition);
-        }
-        .book-collection-app .bc-book-card:hover .bc-book-cover {
-            transform: scale(1.01);
-        }
-        .book-collection-app .bc-book-cover .bc-cover-initials {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.2rem;
-            font-weight: 700;
-            color: var(--bc-text-secondary);
-            opacity: 0.25;
-            letter-spacing: 2px;
-        }
-        .book-collection-app .bc-book-cover .bc-cover-badge {
-            position: absolute;
-            bottom: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(4px);
-            color: #fff;
-            font-size: 0.6rem;
-            font-weight: 600;
-            padding: 3px 14px;
-            border-radius: 60px;
-            white-space: nowrap;
-            letter-spacing: 0.3px;
-            opacity: 0;
-            transition: var(--bc-transition);
-            pointer-events: none;
-        }
-        .book-collection-app .bc-book-card:hover .bc-book-cover .bc-cover-badge {
-            opacity: 1;
-        }
-        .book-collection-app .bc-fav-star {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            font-size: 1.6rem;
-            cursor: pointer;
-            transition: var(--bc-transition);
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(6px);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: none;
-            color: #d4c5b2;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-            z-index: 2;
-        }
-        .book-collection-app .bc-fav-star.active {
-            color: var(--bc-gold);
-            background: rgba(255, 215, 0, 0.12);
-        }
-        .book-collection-app .bc-fav-star:hover {
-            transform: scale(1.15);
-            background: rgba(255, 255, 255, 0.9);
-        }
-        .book-collection-app .bc-book-title {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-            font-size: 1.2rem;
-            line-height: 1.3;
-            color: var(--bc-text);
-            margin-bottom: 2px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        .book-collection-app .bc-book-author {
-            font-size: 0.9rem;
-            color: var(--bc-text-secondary);
-            font-weight: 500;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        .book-collection-app .bc-book-price {
-            font-size: 0.8rem;
-            color: var(--bc-accent);
-            font-weight: 600;
-            margin-top: 2px;
-        }
-        .book-collection-app .bc-book-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 12px;
-            font-size: 0.8rem;
-            color: var(--bc-text-muted);
-            border-top: 1px solid var(--bc-border);
-            padding-top: 12px;
-            flex-wrap: wrap;
-            gap: 4px;
-        }
-        .book-collection-app .bc-book-rating {
-            color: var(--bc-gold);
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-        }
-        .book-collection-app .bc-book-status {
-            padding: 3px 14px;
-            border-radius: 60px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.4px;
-            border: 1px solid transparent;
-        }
-        .book-collection-app .bc-book-status.selesai {
-            background: var(--bc-green-bg);
-            color: #2d7a5e;
-            border-color: #b8dfd0;
-        }
-        .book-collection-app .bc-book-status.sedang {
-            background: var(--bc-orange-bg);
-            color: #b87a1a;
-            border-color: #f0d5a8;
-        }
-        .book-collection-app .bc-book-status.ingin {
-            background: var(--bc-blue-bg);
-            color: #3a6a94;
-            border-color: #b8cfe0;
-        }
-        .book-collection-app .bc-card-actions {
-            display: flex;
-            gap: 6px;
-            margin-top: 14px;
-            justify-content: flex-end;
-            flex-wrap: wrap;
-        }
-        .book-collection-app .bc-card-actions button {
-            background: transparent;
-            border: none;
-            font-size: 0.85rem;
-            cursor: pointer;
-            color: var(--bc-text-muted);
-            transition: var(--bc-transition);
-            padding: 6px 12px;
-            border-radius: 40px;
-            font-weight: 500;
-            font-family: 'Outfit', sans-serif;
-        }
-        .book-collection-app .bc-card-actions button:hover {
-            background: var(--bc-surface-hover);
-            color: var(--bc-text);
-        }
-        .book-collection-app .bc-card-actions .bc-delete-btn {
-            color: var(--bc-text-muted);
-        }
-        .book-collection-app .bc-card-actions .bc-delete-btn:hover {
-            background: var(--bc-red-bg);
-            color: var(--bc-red);
-        }
-        .book-collection-app .bc-card-actions .bc-detail-btn:hover {
-            background: var(--bc-blue-bg);
-            color: var(--bc-blue);
-        }
-        .book-collection-app .bc-card-actions .bc-download-btn {
-            color: var(--bc-purple);
-        }
-        .book-collection-app .bc-card-actions .bc-download-btn:hover {
-            background: var(--bc-purple-bg);
-            color: #6a4a8a;
-        }
-
-        /* EMPTY */
-        .book-collection-app .bc-empty-state {
-            text-align: center;
-            padding: 80px 20px;
-            color: var(--bc-text-muted);
-            grid-column: 1 / -1;
-        }
-        .book-collection-app .bc-empty-state .bc-emoji {
-            font-size: 5rem;
-            margin-bottom: 16px;
-        }
-        .book-collection-app .bc-empty-state h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            color: var(--bc-text-secondary);
-            margin-bottom: 6px;
-        }
-        .book-collection-app .bc-empty-state p {
-            font-size: 1rem;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        /* MODAL */
-        .book-collection-app .bc-modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(44, 36, 27, 0.5);
-            backdrop-filter: blur(8px);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            padding: 20px;
-        }
-        .book-collection-app .bc-modal-overlay.open {
-            display: flex;
-        }
-        .book-collection-app .bc-modal {
-            background: var(--bc-surface);
-            border-radius: var(--bc-radius);
-            max-width: 720px;
-            width: 100%;
-            max-height: 92vh;
-            overflow-y: auto;
-            padding: 36px 40px 32px;
-            box-shadow: var(--bc-shadow-lg);
-            position: relative;
-            animation: bcModalIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        @keyframes bcModalIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.92) translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-        .book-collection-app .bc-modal-close {
-            position: absolute;
-            top: 16px;
-            right: 20px;
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: var(--bc-text-muted);
-            transition: var(--bc-transition);
-            line-height: 1;
-            padding: 4px 8px;
-            border-radius: 50%;
-        }
-        .book-collection-app .bc-modal-close:hover {
-            color: var(--bc-text);
-            transform: rotate(90deg);
-            background: var(--bc-bg);
-        }
-        .book-collection-app .bc-modal h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 24px;
-            color: var(--bc-text);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .book-collection-app .bc-modal h2 .bc-modal-icon {
-            font-size: 1.8rem;
-        }
-        .book-collection-app .bc-form-group {
-            margin-bottom: 18px;
-        }
-        .book-collection-app .bc-form-group label {
-            display: block;
-            font-weight: 600;
-            font-size: 0.85rem;
-            color: var(--bc-text-secondary);
-            margin-bottom: 5px;
-            letter-spacing: 0.2px;
-        }
-        .book-collection-app .bc-form-group label .bc-label-icon {
-            margin-right: 4px;
-        }
-        .book-collection-app .bc-form-group input,
-        .book-collection-app .bc-form-group select,
-        .book-collection-app .bc-form-group textarea {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1.5px solid var(--bc-border);
-            border-radius: var(--bc-radius-sm);
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.95rem;
-            background: #fcfaf8;
-            transition: var(--bc-transition);
-            color: var(--bc-text);
-        }
-        .book-collection-app .bc-form-group input:focus,
-        .book-collection-app .bc-form-group select:focus,
-        .book-collection-app .bc-form-group textarea:focus {
-            outline: none;
-            border-color: var(--bc-accent);
-            box-shadow: 0 0 0 4px rgba(184, 115, 51, 0.08);
-            background: #fff;
-        }
-        .book-collection-app .bc-form-group textarea {
-            resize: vertical;
-            min-height: 90px;
-        }
-        .book-collection-app .bc-form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px;
-        }
-        .book-collection-app .bc-form-group .bc-cat-input-group {
-            display: flex;
-            gap: 8px;
-        }
-        .book-collection-app .bc-form-group .bc-cat-input-group select {
-            flex: 1;
-        }
-        .book-collection-app .bc-form-group .bc-cat-input-group button {
-            padding: 10px 18px;
-            border-radius: var(--bc-radius-sm);
-            border: 1.5px solid var(--bc-border);
-            background: var(--bc-bg);
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.85rem;
-            color: var(--bc-text-secondary);
-            transition: var(--bc-transition);
-            white-space: nowrap;
-            font-family: 'Outfit', sans-serif;
-        }
-        .book-collection-app .bc-form-group .bc-cat-input-group button:hover {
-            background: var(--bc-text);
-            color: #fff;
-            border-color: var(--bc-text);
-        }
-
-        .book-collection-app .bc-type-toggle {
-            display: flex;
-            gap: 12px;
-            background: var(--bc-bg);
-            padding: 4px;
-            border-radius: 60px;
-            border: 1.5px solid var(--bc-border);
-        }
-        .book-collection-app .bc-type-toggle .bc-toggle-btn {
-            flex: 1;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: var(--bc-transition);
-            background: transparent;
-            color: var(--bc-text-secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-family: 'Outfit', sans-serif;
-        }
-        .book-collection-app .bc-type-toggle .bc-toggle-btn.active {
-            background: var(--bc-surface);
-            color: var(--bc-text);
-            box-shadow: var(--bc-shadow-sm);
-        }
-        .book-collection-app .bc-type-toggle .bc-toggle-btn:hover:not(.active) {
-            color: var(--bc-text);
-        }
-        .book-collection-app .bc-type-toggle .bc-toggle-btn .bc-toggle-icon {
-            font-size: 1.1rem;
-        }
-
-        .book-collection-app .bc-cover-upload-wrapper {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .book-collection-app .bc-cover-upload-wrapper .bc-cover-preview {
-            width: 80px;
-            height: 120px;
-            border-radius: var(--bc-radius-sm);
-            background: #ede8e1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.4rem;
-            color: #c7b9ab;
-            overflow: hidden;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            flex-shrink: 0;
-            border: 1px solid var(--bc-border);
-        }
-        .book-collection-app .bc-cover-upload-wrapper .bc-cover-preview.has-image {
-            background-color: #ede8e1;
-        }
-        .book-collection-app .bc-cover-upload-wrapper .bc-cover-preview .bc-preview-initials {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--bc-text-secondary);
-            opacity: 0.2;
-        }
-        .book-collection-app .bc-cover-upload-wrapper .bc-file-input-wrap {
-            flex: 1;
-            position: relative;
-        }
-        .book-collection-app .bc-cover-upload-wrapper .bc-file-input-wrap input[type="file"] {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            cursor: pointer;
-        }
-        .book-collection-app .bc-cover-upload-wrapper .bc-file-input-wrap .bc-file-label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 20px;
-            border: 2px dashed var(--bc-border);
-            border-radius: var(--bc-radius-sm);
-            background: #fcfaf8;
-            cursor: pointer;
-            transition: var(--bc-transition);
-            font-weight: 500;
-            color: var(--bc-text-secondary);
-            font-size: 0.9rem;
-            min-height: 56px;
-        }
-        .book-collection-app .bc-cover-upload-wrapper .bc-file-input-wrap .bc-file-label:hover {
-            border-color: var(--bc-accent);
-            background: #faf6f0;
-        }
-        .book-collection-app .bc-cover-upload-wrapper .bc-file-input-wrap .bc-file-label .bc-file-icon {
-            font-size: 1.4rem;
-        }
-        .book-collection-app .bc-cover-upload-wrapper .bc-file-input-wrap .bc-file-label .bc-file-name {
-            color: var(--bc-text-muted);
-            font-weight: 400;
-            font-size: 0.8rem;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            max-width: 180px;
-        }
-        .book-collection-app .bc-cover-upload-wrapper .bc-btn-remove-cover {
-            background: none;
-            border: none;
-            color: var(--bc-text-muted);
-            cursor: pointer;
-            font-size: 1rem;
-            padding: 6px 10px;
-            border-radius: 50%;
-            transition: var(--bc-transition);
-        }
-        .book-collection-app .bc-cover-upload-wrapper .bc-btn-remove-cover:hover {
-            color: var(--bc-red);
-            background: var(--bc-red-bg);
-        }
-
-        .book-collection-app .bc-pdf-upload-wrapper {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .book-collection-app .bc-pdf-upload-wrapper .bc-pdf-preview {
-            width: 64px;
-            height: 80px;
-            border-radius: var(--bc-radius-sm);
-            background: #f0eaf5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.2rem;
-            color: #8e6aaa;
-            flex-shrink: 0;
-            border: 1px solid #d8c8e8;
-        }
-        .book-collection-app .bc-pdf-upload-wrapper .bc-file-input-wrap {
-            flex: 1;
-            position: relative;
-        }
-        .book-collection-app .bc-pdf-upload-wrapper .bc-file-input-wrap input[type="file"] {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            cursor: pointer;
-        }
-        .book-collection-app .bc-pdf-upload-wrapper .bc-file-input-wrap .bc-file-label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 20px;
-            border: 2px dashed var(--bc-border);
-            border-radius: var(--bc-radius-sm);
-            background: #fcfaf8;
-            cursor: pointer;
-            transition: var(--bc-transition);
-            font-weight: 500;
-            color: var(--bc-text-secondary);
-            font-size: 0.9rem;
-            min-height: 56px;
-        }
-        .book-collection-app .bc-pdf-upload-wrapper .bc-file-input-wrap .bc-file-label:hover {
-            border-color: var(--bc-purple);
-            background: #faf5ff;
-        }
-        .book-collection-app .bc-pdf-upload-wrapper .bc-file-input-wrap .bc-file-label .bc-file-icon {
-            font-size: 1.4rem;
-        }
-        .book-collection-app .bc-pdf-upload-wrapper .bc-file-input-wrap .bc-file-label .bc-file-name {
-            color: var(--bc-text-muted);
-            font-weight: 400;
-            font-size: 0.8rem;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            max-width: 180px;
-        }
-        .book-collection-app .bc-pdf-upload-wrapper .bc-btn-remove-pdf {
-            background: none;
-            border: none;
-            color: var(--bc-text-muted);
-            cursor: pointer;
-            font-size: 1rem;
-            padding: 6px 10px;
-            border-radius: 50%;
-            transition: var(--bc-transition);
-        }
-        .book-collection-app .bc-pdf-upload-wrapper .bc-btn-remove-pdf:hover {
-            color: var(--bc-red);
-            background: var(--bc-red-bg);
-        }
-        .book-collection-app .bc-pdf-upload-wrapper .bc-pdf-info {
-            font-size: 0.75rem;
-            color: var(--bc-text-muted);
-        }
-
-        .book-collection-app .bc-field-physical {
-            display: block;
-        }
-        .book-collection-app .bc-field-digital {
-            display: none;
-        }
-        .book-collection-app .bc-book-type-digital .bc-field-physical {
-            display: none;
-        }
-        .book-collection-app .bc-book-type-digital .bc-field-digital {
-            display: block;
-        }
-
-        .book-collection-app .bc-rating-stars {
-            display: flex;
-            gap: 10px;
-            font-size: 2rem;
-            cursor: pointer;
-            color: var(--bc-border);
-            padding: 6px 0;
-        }
-        .book-collection-app .bc-rating-stars .bc-star {
-            transition: var(--bc-transition);
-        }
-        .book-collection-app .bc-rating-stars .bc-star.active {
-            color: var(--bc-gold);
-            transform: scale(1.05);
-            text-shadow: 0 0 12px rgba(232, 184, 109, 0.3);
-        }
-        .book-collection-app .bc-rating-stars .bc-star:hover {
-            transform: scale(1.15);
-            color: var(--bc-gold);
-        }
-        .book-collection-app .bc-modal .bc-btn-primary {
-            width: 100%;
-            justify-content: center;
-            margin-top: 6px;
-        }
-        .book-collection-app .bc-modal .bc-btn-primary:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none !important;
-        }
-
-        /* DETAIL MODAL */
-        .book-collection-app .bc-detail-cover {
-            width: 100%;
-            max-height: 220px;
-            background: #ede8e1;
-            border-radius: var(--bc-radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            color: #c7b9ab;
-            margin-bottom: 18px;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: #ede8e1;
-            aspect-ratio: 16/7;
-            transition: var(--bc-transition);
-            position: relative;
-        }
-        .book-collection-app .bc-detail-cover .bc-detail-initials {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            font-weight: 700;
-            color: var(--bc-text-secondary);
-            opacity: 0.2;
-            letter-spacing: 4px;
-        }
-        .book-collection-app .bc-detail-cover .bc-detail-badge {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(4px);
-            color: #fff;
-            padding: 4px 16px;
-            border-radius: 60px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.3px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .book-collection-app .bc-detail-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 600;
-            line-height: 1.2;
-        }
-        .book-collection-app .bc-detail-author {
-            font-size: 1.05rem;
-            color: var(--bc-text-secondary);
-            font-weight: 500;
-            margin-top: 2px;
-        }
-        .book-collection-app .bc-detail-price {
-            font-size: 1rem;
-            color: var(--bc-accent);
-            font-weight: 600;
-            margin-top: 2px;
-        }
-        .book-collection-app .bc-detail-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 10px 0 18px;
-            font-size: 0.9rem;
-            color: var(--bc-text-secondary);
-        }
-        .book-collection-app .bc-detail-meta span {
-            background: #f0ebe4;
-            padding: 4px 16px;
-            border-radius: 60px;
-            font-weight: 500;
-        }
-        .book-collection-app .bc-detail-meta .bc-rating-badge {
-            background: transparent;
-            padding-left: 0;
-            color: var(--bc-gold);
-            font-size: 1rem;
-        }
-        .book-collection-app .bc-detail-download {
-            margin: 12px 0 4px;
-        }
-        .book-collection-app .bc-detail-download .bc-btn-download {
-            background: var(--bc-purple);
-            color: #fff;
-            border: none;
-            padding: 10px 28px;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: var(--bc-transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Outfit', sans-serif;
-        }
-        .book-collection-app .bc-detail-download .bc-btn-download:hover {
-            background: #6a4a8a;
-            transform: translateY(-2px);
-            box-shadow: var(--bc-shadow-md);
-        }
-        .book-collection-app .bc-detail-tabs {
-            display: flex;
-            gap: 4px;
-            border-bottom: 2px solid var(--bc-border);
-            margin: 16px 0 14px;
-        }
-        .book-collection-app .bc-detail-tabs button {
-            background: transparent;
-            border: none;
-            padding: 10px 20px;
-            font-weight: 600;
-            color: var(--bc-text-muted);
-            cursor: pointer;
-            border-bottom: 3px solid transparent;
-            transition: var(--bc-transition);
-            font-size: 0.9rem;
-            font-family: 'Outfit', sans-serif;
-        }
-        .book-collection-app .bc-detail-tabs button.active {
-            color: var(--bc-text);
-            border-bottom-color: var(--bc-text);
-        }
-        .book-collection-app .bc-detail-tabs button:hover {
-            color: var(--bc-text);
-        }
-        .book-collection-app .bc-detail-tab-content {
-            display: none;
-            padding: 6px 0 10px;
-            animation: bcFadeTab 0.25s ease;
-        }
-        .book-collection-app .bc-detail-tab-content.active {
-            display: block;
-        }
-        @keyframes bcFadeTab {
-            0% {
-                opacity: 0.2;
-                transform: translateY(6px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .book-collection-app .bc-detail-tab-content p {
-            line-height: 1.7;
-            color: var(--bc-text);
-            white-space: pre-wrap;
-            font-size: 0.98rem;
-        }
-        .book-collection-app .bc-highlight-item {
-            background: #fcf9f6;
-            border-left: 4px solid var(--bc-gold);
-            padding: 14px 18px;
-            margin-bottom: 14px;
-            border-radius: 0 var(--bc-radius-sm) var(--bc-radius-sm) 0;
-            box-shadow: var(--bc-shadow-sm);
-            position: relative;
-        }
-        .book-collection-app .bc-highlight-item strong {
-            color: var(--bc-text-secondary);
-            display: block;
-            margin-bottom: 4px;
-            font-size: 0.85rem;
-        }
-        .book-collection-app .bc-highlight-item p {
-            margin: 0;
-            color: var(--bc-text);
-        }
-        .book-collection-app .bc-highlight-item .bc-hl-delete {
-            background: none;
-            border: none;
-            color: var(--bc-text-muted);
-            float: right;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: var(--bc-transition);
-            padding: 2px 6px;
-            border-radius: 50%;
-        }
-        .book-collection-app .bc-highlight-item .bc-hl-delete:hover {
-            color: #c0392b;
-            background: #fde8e5;
-        }
-        .book-collection-app .bc-add-highlight-form {
-            display: flex;
-            gap: 12px;
-            margin-top: 18px;
-            flex-wrap: wrap;
-        }
-        .book-collection-app .bc-add-highlight-form input {
-            flex: 1;
-            min-width: 120px;
-            padding: 10px 14px;
-            border: 1.5px solid var(--bc-border);
-            border-radius: var(--bc-radius-sm);
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.9rem;
-            background: #fcfaf8;
-            transition: var(--bc-transition);
-        }
-        .book-collection-app .bc-add-highlight-form input:focus {
-            outline: none;
-            border-color: var(--bc-accent);
-            box-shadow: 0 0 0 3px rgba(184, 115, 51, 0.08);
-        }
-        .book-collection-app .bc-add-highlight-form button {
-            background: var(--bc-text);
-            color: #fff;
-            border: none;
-            padding: 10px 24px;
-            border-radius: 60px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 0.85rem;
-            transition: var(--bc-transition);
-            font-family: 'Outfit', sans-serif;
-        }
-        .book-collection-app .bc-add-highlight-form button:hover {
-            background: #4a3d31;
-            transform: translateY(-2px);
-        }
-
-        .book-collection-app .bc-modal::-webkit-scrollbar {
-            width: 6px;
-        }
-        .book-collection-app .bc-modal::-webkit-scrollbar-track {
-            background: #f0ebe4;
-            border-radius: 10px;
-        }
-        .book-collection-app .bc-modal::-webkit-scrollbar-thumb {
-            background: #d6cdc0;
-            border-radius: 10px;
-        }
-
-        /* TOAST */
-        .book-collection-app .bc-toast {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%) translateY(80px);
-            background: var(--bc-text);
-            color: #fff;
-            padding: 14px 32px;
-            border-radius: 60px;
-            font-weight: 500;
-            font-size: 0.95rem;
-            box-shadow: var(--bc-shadow-lg);
-            z-index: 2000;
-            opacity: 0;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            pointer-events: none;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-family: 'Outfit', sans-serif;
-        }
-        .book-collection-app .bc-toast.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-        .book-collection-app .bc-toast .bc-toast-icon {
-            font-size: 1.4rem;
-        }
-
-        @media (max-width: 700px) {
-            .book-collection-app {
-                padding: 14px 12px 20px;
-            }
-            .book-collection-app .bc-header-left h1 {
-                font-size: 1.7rem;
-            }
-            .book-collection-app .bc-header-left .bc-sub {
-                font-size: 0.8rem;
-            }
-            .book-collection-app .bc-header-left .bc-logo-icon {
-                font-size: 2.2rem;
-            }
-            .book-collection-app .bc-modal {
-                padding: 28px 20px;
-                margin: 8px;
-                border-radius: 20px;
-            }
-            .book-collection-app .bc-form-row {
-                grid-template-columns: 1fr;
-            }
-            .book-collection-app .bc-book-grid {
-                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-                gap: 18px;
-            }
-            .book-collection-app .bc-book-card {
-                padding: 14px 12px;
-            }
-            .book-collection-app .bc-book-title {
-                font-size: 1rem;
-            }
-            .book-collection-app .bc-detail-title {
-                font-size: 1.5rem;
-            }
-            .book-collection-app .bc-header-actions .bc-btn-outline {
-                display: none;
-            }
-            .book-collection-app .bc-filter-bar {
-                gap: 8px;
-            }
-            .book-collection-app .bc-filter-btn {
-                padding: 8px 18px;
-                font-size: 0.8rem;
-            }
-            .book-collection-app .bc-add-highlight-form {
-                flex-direction: column;
-            }
-            .book-collection-app .bc-add-highlight-form button {
-                width: 100%;
-                justify-content: center;
-            }
-            .book-collection-app .bc-cat-btn {
-                padding: 10px 18px;
-                font-size: 0.8rem;
-            }
-            .book-collection-app .bc-cat-btn .bc-folder-icon {
-                font-size: 1.2rem;
-            }
-            .book-collection-app .bc-search-wrapper {
-                max-width: 100%;
-                padding: 6px 16px 6px 20px;
-            }
-            .book-collection-app .bc-cover-upload-wrapper .bc-cover-preview {
-                width: 60px;
-                height: 90px;
-                font-size: 1.8rem;
-            }
-            .book-collection-app .bc-cover-upload-wrapper .bc-file-input-wrap .bc-file-label {
-                padding: 10px 14px;
-                font-size: 0.8rem;
-                min-height: 48px;
-            }
-            .book-collection-app .bc-pdf-upload-wrapper .bc-pdf-preview {
-                width: 48px;
-                height: 60px;
-                font-size: 1.6rem;
-            }
-            .book-collection-app .bc-type-toggle .bc-toggle-btn {
-                padding: 8px 14px;
-                font-size: 0.8rem;
-            }
-        }
-        @media (max-width: 440px) {
-            .book-collection-app .bc-book-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
-            }
-            .book-collection-app .bc-book-card {
-                padding: 10px 8px;
-            }
-            .book-collection-app .bc-book-cover {
-                aspect-ratio: 2/3;
-                font-size: 2.4rem;
-            }
-            .book-collection-app .bc-book-title {
-                font-size: 0.9rem;
-            }
-            .book-collection-app .bc-fav-star {
-                width: 32px;
-                height: 32px;
-                font-size: 1.2rem;
-                top: 8px;
-                right: 8px;
-            }
-            .book-collection-app .bc-book-meta {
-                flex-wrap: wrap;
-                gap: 4px;
-                font-size: 0.7rem;
-            }
-            .book-collection-app .bc-card-actions button {
-                font-size: 0.75rem;
-                padding: 4px 8px;
-            }
-            .book-collection-app .bc-book-status {
-                font-size: 0.55rem;
-                padding: 2px 10px;
-            }
-            .book-collection-app .bc-cat-btn {
-                padding: 8px 14px;
-                font-size: 0.7rem;
-            }
-            .book-collection-app .bc-cat-btn .bc-cat-count {
-                display: none;
-            }
-            .book-collection-app .bc-header-left h1 {
-                font-size: 1.4rem;
-            }
-            .book-collection-app .bc-header-left .bc-logo-icon {
-                font-size: 1.8rem;
-            }
-            .book-collection-app .bc-filter-btn {
-                padding: 6px 14px;
-                font-size: 0.7rem;
-            }
-            .book-collection-app .bc-modal {
-                padding: 20px 14px;
-            }
-            .book-collection-app .bc-rating-stars {
-                font-size: 1.6rem;
-            }
-            .book-collection-app .bc-search-wrapper input {
-                font-size: 0.85rem;
-                padding: 8px 0;
-            }
-            .book-collection-app .bc-type-toggle .bc-toggle-btn {
-                padding: 6px 10px;
-                font-size: 0.7rem;
-            }
-            .book-collection-app .bc-type-toggle .bc-toggle-btn .bc-toggle-icon {
-                font-size: 0.9rem;
-            }
-        }
-
-        /* ===== MATERI APP STYLES (tetap sama) ===== */
+        /* ===== MATERI APP STYLES ===== */
         .materi-app-wrapper {
             max-width: 1200px;
             margin: 0 auto;
@@ -1972,12 +384,6 @@
             background: rgba(10, 10, 30, 0.7);
             border: 1px solid rgba(108, 60, 225, 0.1);
             box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4), 0 0 60px rgba(108, 60, 225, 0.02);
-            border-radius: 48px;
-        }
-        body.book-collection-mode .materi-app-wrapper {
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(200, 200, 200, 0.2);
-            box-shadow: 0 25px 50px -12px rgba(0, 40, 80, 0.15);
             border-radius: 48px;
         }
         .materi-app-wrapper .header {
@@ -2012,12 +418,6 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        body.book-collection-mode .materi-app-wrapper .header h1 {
-            background: linear-gradient(135deg, #0b3a5e, #1b5e8a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
         .materi-app-wrapper .header h1 i {
             background: #1a5f8b;
             padding: 0.5rem;
@@ -2033,10 +433,6 @@
         body.pedoman-mode .materi-app-wrapper .header h1 i {
             background: linear-gradient(135deg, #8B5CF6, #6C3CE1);
             -webkit-text-fill-color: #fff;
-        }
-        body.book-collection-mode .materi-app-wrapper .header h1 i {
-            background: #1a5f8b;
-            -webkit-text-fill-color: white;
         }
         .materi-app-wrapper .header-left {
             display: flex;
@@ -2063,10 +459,6 @@
         body.pedoman-mode .materi-app-wrapper .btn-back {
             background: rgba(108, 60, 225, 0.1);
             color: #8B5CF6;
-        }
-        body.book-collection-mode .materi-app-wrapper .btn-back {
-            background: rgba(26, 95, 139, 0.1);
-            color: #1a5f8b;
         }
         .materi-app-wrapper .btn-back:hover {
             background: rgba(26, 95, 139, 0.2);
@@ -2096,10 +488,6 @@
             background: rgba(255, 255, 255, 0.05);
             border-color: rgba(108, 60, 225, 0.1);
         }
-        body.book-collection-mode .materi-app-wrapper .search-box {
-            background: white;
-            border-color: rgba(60, 130, 200, 0.12);
-        }
         .materi-app-wrapper .search-box i {
             color: #2b7bb0;
         }
@@ -2108,9 +496,6 @@
         }
         body.pedoman-mode .materi-app-wrapper .search-box i {
             color: #8B5CF6;
-        }
-        body.book-collection-mode .materi-app-wrapper .search-box i {
-            color: #2b7bb0;
         }
         .materi-app-wrapper .search-box input {
             border: none;
@@ -2130,9 +515,6 @@
         body.pedoman-mode .materi-app-wrapper .search-box input {
             color: #c4b5fd;
         }
-        body.book-collection-mode .materi-app-wrapper .search-box input {
-            color: #0b2b4a;
-        }
         .materi-app-wrapper .search-box input::placeholder {
             color: #9bb7d4;
         }
@@ -2141,9 +523,6 @@
         }
         body.pedoman-mode .materi-app-wrapper .search-box input::placeholder {
             color: rgba(196, 181, 253, 0.3);
-        }
-        body.book-collection-mode .materi-app-wrapper .search-box input::placeholder {
-            color: #9bb7d4;
         }
         .materi-app-wrapper .btn {
             border: none;
@@ -2171,11 +550,6 @@
             color: #fff;
             box-shadow: 0 8px 32px rgba(108, 60, 225, 0.2);
         }
-        body.book-collection-mode .materi-app-wrapper .btn-primary {
-            background: #1a5f8b;
-            color: white;
-            box-shadow: 0 8px 14px -6px #1a5f8b60;
-        }
         .materi-app-wrapper .btn-primary:hover {
             background: #0f4a70;
             transform: translateY(-2px);
@@ -2196,10 +570,6 @@
         body.pedoman-mode .materi-app-wrapper .btn-outline {
             border-color: rgba(108, 60, 225, 0.15);
             color: #8B5CF6;
-        }
-        body.book-collection-mode .materi-app-wrapper .btn-outline {
-            border-color: #b3d3ed;
-            color: #0e3d5e;
         }
         .materi-app-wrapper .btn-outline:hover {
             background: rgba(26, 95, 139, 0.06);
@@ -2251,10 +621,6 @@
             border: 1px solid rgba(108, 60, 225, 0.08);
             box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.2);
         }
-        body.book-collection-mode .materi-app-wrapper .folder-card {
-            background: white;
-            border-color: rgba(200, 222, 245, 0.5);
-        }
         .materi-app-wrapper .folder-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 18px 35px -14px #1a5f8b30;
@@ -2262,9 +628,6 @@
         body.pedoman-mode .materi-app-wrapper .folder-card:hover {
             border-color: rgba(108, 60, 225, 0.2);
             box-shadow: 0 18px 35px -14px rgba(108, 60, 225, 0.1);
-        }
-        body.book-collection-mode .materi-app-wrapper .folder-card:hover {
-            box-shadow: 0 18px 35px -14px #1a5f8b30;
         }
         .materi-app-wrapper .folder-card .icon {
             font-size: 2.8rem;
@@ -2276,9 +639,6 @@
         }
         body.pedoman-mode .materi-app-wrapper .folder-card .icon {
             color: #8B5CF6;
-        }
-        body.book-collection-mode .materi-app-wrapper .folder-card .icon {
-            color: #2b7bb0;
         }
         .materi-app-wrapper .folder-card .name {
             font-weight: 700;
@@ -2293,9 +653,6 @@
         }
         body.pedoman-mode .materi-app-wrapper .folder-card .name {
             color: #c4b5fd;
-        }
-        body.book-collection-mode .materi-app-wrapper .folder-card .name {
-            color: #0b2b4a;
         }
         .materi-app-wrapper .folder-card .tag-group {
             display: flex;
@@ -2320,10 +677,6 @@
             background: rgba(108, 60, 225, 0.1);
             color: #8B5CF6;
         }
-        body.book-collection-mode .materi-app-wrapper .folder-card .tag {
-            background: #e3eff9;
-            color: #11507a;
-        }
         .materi-app-wrapper .folder-card .meta {
             font-size: 0.65rem;
             color: #6b93b3;
@@ -2337,9 +690,6 @@
         }
         body.pedoman-mode .materi-app-wrapper .folder-card .meta {
             color: rgba(196, 181, 253, 0.3);
-        }
-        body.book-collection-mode .materi-app-wrapper .folder-card .meta {
-            color: #6b93b3;
         }
         .materi-app-wrapper .folder-card .actions {
             margin-top: 0.8rem;
@@ -2363,9 +713,6 @@
         body.pedoman-mode .materi-app-wrapper .folder-card .actions button {
             color: rgba(196, 181, 253, 0.3);
         }
-        body.book-collection-mode .materi-app-wrapper .folder-card .actions button {
-            color: #6b93b3;
-        }
         .materi-app-wrapper .folder-card .actions button:hover {
             background: rgba(26, 95, 139, 0.08);
             color: #1a5f8b;
@@ -2375,9 +722,6 @@
         }
         body.pedoman-mode .materi-app-wrapper .folder-card .actions button:hover {
             color: #8B5CF6;
-        }
-        body.book-collection-mode .materi-app-wrapper .folder-card .actions button:hover {
-            color: #1a5f8b;
         }
         .materi-app-wrapper #detailView {
             display: none;
@@ -2398,9 +742,6 @@
         body.pedoman-mode .materi-app-wrapper .detail-header {
             border-bottom-color: rgba(108, 60, 225, 0.1);
         }
-        body.book-collection-mode .materi-app-wrapper .detail-header {
-            border-bottom-color: rgba(26, 95, 139, 0.1);
-        }
         .materi-app-wrapper .detail-header .title {
             font-size: 1.6rem;
             font-weight: 700;
@@ -2415,9 +756,6 @@
         body.pedoman-mode .materi-app-wrapper .detail-header .title {
             color: #c4b5fd;
         }
-        body.book-collection-mode .materi-app-wrapper .detail-header .title {
-            color: #0b2b4a;
-        }
         .materi-app-wrapper .detail-header .title i {
             color: #2b7bb0;
             margin-right: 0.5rem;
@@ -2427,9 +765,6 @@
         }
         body.pedoman-mode .materi-app-wrapper .detail-header .title i {
             color: #8B5CF6;
-        }
-        body.book-collection-mode .materi-app-wrapper .detail-header .title i {
-            color: #2b7bb0;
         }
         .materi-app-wrapper .detail-tags {
             display: flex;
@@ -2452,10 +787,6 @@
         body.pedoman-mode .materi-app-wrapper .detail-tags .tag {
             background: rgba(108, 60, 225, 0.1);
             color: #8B5CF6;
-        }
-        body.book-collection-mode .materi-app-wrapper .detail-tags .tag {
-            background: #e3eff9;
-            color: #11507a;
         }
         .materi-app-wrapper .detail-toolbar {
             display: flex;
@@ -2487,10 +818,6 @@
             background: rgba(255, 255, 255, 0.03);
             border-color: rgba(108, 60, 225, 0.1);
         }
-        body.book-collection-mode .materi-app-wrapper .detail-search {
-            background: white;
-            border-color: rgba(60, 130, 200, 0.12);
-        }
         .materi-app-wrapper .detail-search i {
             color: #2b7bb0;
             font-size: 0.9rem;
@@ -2500,9 +827,6 @@
         }
         body.pedoman-mode .materi-app-wrapper .detail-search i {
             color: #8B5CF6;
-        }
-        body.book-collection-mode .materi-app-wrapper .detail-search i {
-            color: #2b7bb0;
         }
         .materi-app-wrapper .detail-search input {
             border: none;
@@ -2522,9 +846,6 @@
         body.pedoman-mode .materi-app-wrapper .detail-search input {
             color: #c4b5fd;
         }
-        body.book-collection-mode .materi-app-wrapper .detail-search input {
-            color: #0b2b4a;
-        }
         .materi-app-wrapper .detail-search input::placeholder {
             color: #9bb7d4;
         }
@@ -2533,9 +854,6 @@
         }
         body.pedoman-mode .materi-app-wrapper .detail-search input::placeholder {
             color: rgba(196, 181, 253, 0.3);
-        }
-        body.book-collection-mode .materi-app-wrapper .detail-search input::placeholder {
-            color: #9bb7d4;
         }
         .materi-app-wrapper .content-list {
             display: flex;
@@ -2565,10 +883,6 @@
             background: rgba(255, 255, 255, 0.03);
             border-color: rgba(108, 60, 225, 0.06);
         }
-        body.book-collection-mode .materi-app-wrapper .content-item {
-            background: white;
-            border-color: rgba(200, 222, 245, 0.4);
-        }
         .materi-app-wrapper .content-item:hover {
             border-color: #7fb4d9;
             background: #f8fcff;
@@ -2580,10 +894,6 @@
         body.pedoman-mode .materi-app-wrapper .content-item:hover {
             border-color: rgba(108, 60, 225, 0.15);
             background: rgba(108, 60, 225, 0.02);
-        }
-        body.book-collection-mode .materi-app-wrapper .content-item:hover {
-            border-color: #7fb4d9;
-            background: #f8fcff;
         }
         .materi-app-wrapper .content-item .left {
             display: flex;
@@ -2604,9 +914,6 @@
         body.pedoman-mode .materi-app-wrapper .content-item .left i {
             color: #8B5CF6;
         }
-        body.book-collection-mode .materi-app-wrapper .content-item .left i {
-            color: #2b7bb0;
-        }
         .materi-app-wrapper .content-item .left .name {
             font-weight: 500;
             color: #0b2b4a;
@@ -2620,9 +927,6 @@
         }
         body.pedoman-mode .materi-app-wrapper .content-item .left .name {
             color: #c4b5fd;
-        }
-        body.book-collection-mode .materi-app-wrapper .content-item .left .name {
-            color: #0b2b4a;
         }
         .materi-app-wrapper .content-item .left .preview {
             font-size: 0.75rem;
@@ -2641,9 +945,6 @@
         }
         body.pedoman-mode .materi-app-wrapper .content-item .left .preview {
             color: rgba(196, 181, 253, 0.3);
-        }
-        body.book-collection-mode .materi-app-wrapper .content-item .left .preview {
-            color: #6b93b3;
         }
         .materi-app-wrapper .content-item .right {
             display: flex;
@@ -2666,9 +967,6 @@
         body.pedoman-mode .materi-app-wrapper .content-item .right button {
             color: rgba(196, 181, 253, 0.3);
         }
-        body.book-collection-mode .materi-app-wrapper .content-item .right button {
-            color: #6b93b3;
-        }
         .materi-app-wrapper .content-item .right button:hover {
             background: rgba(26, 95, 139, 0.08);
             color: #1a5f8b;
@@ -2678,9 +976,6 @@
         }
         body.pedoman-mode .materi-app-wrapper .content-item .right button:hover {
             color: #8B5CF6;
-        }
-        body.book-collection-mode .materi-app-wrapper .content-item .right button:hover {
-            color: #1a5f8b;
         }
         .materi-app-wrapper .content-item .right button.delete:hover {
             color: #b54a4a;
@@ -2695,9 +990,6 @@
         }
         body.pedoman-mode .materi-app-wrapper .empty-content {
             color: rgba(196, 181, 253, 0.3);
-        }
-        body.book-collection-mode .materi-app-wrapper .empty-content {
-            color: #8db2ce;
         }
         .materi-app-wrapper .empty-content i {
             font-size: 2.5rem;
@@ -2715,9 +1007,6 @@
         body.pedoman-mode .materi-app-wrapper .content-count {
             color: rgba(196, 181, 253, 0.3);
         }
-        body.book-collection-mode .materi-app-wrapper .content-count {
-            color: #6b93b3;
-        }
         .materi-app-wrapper .file-badge {
             font-size: 0.6rem;
             background: #d4e6f7;
@@ -2733,10 +1022,6 @@
         body.pedoman-mode .materi-app-wrapper .file-badge {
             background: rgba(108, 60, 225, 0.1);
             color: #8B5CF6;
-        }
-        body.book-collection-mode .materi-app-wrapper .file-badge {
-            background: #d4e6f7;
-            color: #0e4b74;
         }
         .materi-app-wrapper .highlight {
             background: #ffeb3b;
@@ -2767,9 +1052,6 @@
         body.pedoman-mode .modal-overlay {
             background: rgba(0, 0, 0, 0.6);
         }
-        body.book-collection-mode .modal-overlay {
-            background: rgba(0, 20, 40, 0.4);
-        }
         .modal-box {
             background: white;
             max-width: 650px;
@@ -2794,10 +1076,6 @@
             border: 1px solid rgba(108, 60, 225, 0.1);
             box-shadow: 0 40px 70px -20px rgba(0, 0, 0, 0.8);
         }
-        body.book-collection-mode .modal-box {
-            background: white;
-            box-shadow: 0 40px 70px -20px #0b2b4a;
-        }
         .modal-box h3 {
             font-size: 1.4rem;
             font-weight: 700;
@@ -2812,9 +1090,6 @@
         }
         body.pedoman-mode .modal-box h3 {
             color: #c4b5fd;
-        }
-        body.book-collection-mode .modal-box h3 {
-            color: #0b2b4a;
         }
         .modal-box input {
             width: 100%;
@@ -2842,11 +1117,6 @@
             border-color: rgba(108, 60, 225, 0.1);
             color: #c4b5fd;
         }
-        body.book-collection-mode .modal-box input {
-            background: #f6faff;
-            border-color: #c6ddee;
-            color: #0b2b4a;
-        }
         .modal-box input:focus {
             border-color: #1a5f8b;
             box-shadow: 0 0 0 3px rgba(26, 95, 139, 0.1);
@@ -2856,9 +1126,6 @@
         }
         body.pedoman-mode .modal-box input:focus {
             border-color: #8B5CF6;
-        }
-        body.book-collection-mode .modal-box input:focus {
-            border-color: #1a5f8b;
         }
         .modal-box .editor-toolbar {
             display: flex;
@@ -2882,10 +1149,6 @@
             background: rgba(255, 255, 255, 0.02);
             border-color: rgba(108, 60, 225, 0.1);
         }
-        body.book-collection-mode .modal-box .editor-toolbar {
-            background: #f6faff;
-            border-color: #c6ddee;
-        }
         .modal-box .editor-toolbar button {
             background: transparent;
             border: none;
@@ -2902,9 +1165,6 @@
         body.pedoman-mode .modal-box .editor-toolbar button {
             color: #c4b5fd;
         }
-        body.book-collection-mode .modal-box .editor-toolbar button {
-            color: #0e3d5e;
-        }
         .modal-box .editor-toolbar button:hover {
             background: rgba(26, 95, 139, 0.1);
         }
@@ -2916,10 +1176,6 @@
             background: rgba(108, 60, 225, 0.1);
             color: #8B5CF6;
         }
-        body.book-collection-mode .modal-box .editor-toolbar button:hover {
-            background: rgba(26, 95, 139, 0.1);
-            color: #1a5f8b;
-        }
         .modal-box .editor-toolbar .separator {
             width: 1px;
             background: #c6ddee;
@@ -2930,9 +1186,6 @@
         }
         body.pedoman-mode .modal-box .editor-toolbar .separator {
             background: rgba(108, 60, 225, 0.1);
-        }
-        body.book-collection-mode .modal-box .editor-toolbar .separator {
-            background: #c6ddee;
         }
         .modal-box textarea {
             width: 100%;
@@ -2963,11 +1216,6 @@
             border-color: rgba(108, 60, 225, 0.1);
             color: #c4b5fd;
         }
-        body.book-collection-mode .modal-box textarea {
-            background: #f6faff;
-            border-color: #c6ddee;
-            color: #0b2b4a;
-        }
         .modal-box textarea:focus {
             border-color: #1a5f8b;
             box-shadow: 0 0 0 3px rgba(26, 95, 139, 0.1);
@@ -2977,9 +1225,6 @@
         }
         body.pedoman-mode .modal-box textarea:focus {
             border-color: #8B5CF6;
-        }
-        body.book-collection-mode .modal-box textarea:focus {
-            border-color: #1a5f8b;
         }
         .modal-actions {
             display: flex;
@@ -3027,9 +1272,6 @@
             background: rgba(10, 10, 30, 0.95);
             border: 1px solid rgba(108, 60, 225, 0.1);
         }
-        body.book-collection-mode .preview-box {
-            background: white;
-        }
         .preview-box .close-preview {
             position: sticky;
             top: 0;
@@ -3051,10 +1293,6 @@
         body.pedoman-mode .preview-box .close-preview {
             background: rgba(108, 60, 225, 0.1);
             color: #c4b5fd;
-        }
-        body.book-collection-mode .preview-box .close-preview {
-            background: rgba(0, 0, 0, 0.1);
-            color: #2c241b;
         }
         .preview-box .close-preview:hover {
             background: rgba(0, 0, 0, 0.2);
@@ -3099,10 +1337,6 @@
             background: rgba(255, 255, 255, 0.02);
             color: #c4b5fd;
         }
-        body.book-collection-mode .preview-box .file-preview .file-info {
-            background: #f6faff;
-            color: #0b2b4a;
-        }
         .preview-box .file-preview .file-info .download-btn {
             display: inline-block;
             margin-top: 0.5rem;
@@ -3128,10 +1362,6 @@
             background: rgba(255, 255, 255, 0.02);
             color: #c4b5fd;
         }
-        body.book-collection-mode .note-preview-content {
-            background: #f6faff;
-            color: #0b2b4a;
-        }
         .note-preview-content h2 {
             color: #0b2b4a;
             margin-bottom: 1rem;
@@ -3149,9 +1379,6 @@
             color: #c4b5fd;
             border-bottom-color: rgba(108, 60, 225, 0.1);
         }
-        body.book-collection-mode .note-preview-content h2 {
-            color: #0b2b4a;
-        }
         .note-preview-content .content {
             white-space: pre-wrap;
             word-break: break-word;
@@ -3168,9 +1395,6 @@
         }
         body.pedoman-mode .note-preview-content .content a {
             color: #8B5CF6;
-        }
-        body.book-collection-mode .note-preview-content .content a {
-            color: #1a5f8b;
         }
         .note-preview-content .content a:hover {
             color: #0f4a70;
@@ -3200,10 +1424,6 @@
         body.pedoman-mode .note-preview-content .content blockquote {
             border-left-color: #8B5CF6;
             color: rgba(196, 181, 253, 0.5);
-        }
-        body.book-collection-mode .note-preview-content .content blockquote {
-            border-left-color: #1a5f8b;
-            color: #2b5f7a;
         }
         .note-preview-content .content li {
             margin-left: 1.5rem;
@@ -5111,13 +3331,6 @@
         .pedoman-back-home:hover {
             background: rgba(108, 60, 225, 0.4);
         }
-        body.book-collection-mode .pedoman-back-home {
-            background: rgba(184, 115, 51, 0.15);
-            color: #b87333;
-        }
-        body.book-collection-mode .pedoman-back-home:hover {
-            background: rgba(184, 115, 51, 0.25);
-        }
     </style>
 </head>
 <body>
@@ -5142,11 +3355,6 @@
                     <span class="menu-icon pedoman"><i class="fas fa-quran"></i></span>
                     <div class="menu-name">📖 Pedoman Hidup</div>
                     <div class="menu-desc">Surah, Asbabun Nuzul, dan Makna Surah</div>
-                </div>
-                <div class="menu-card" onclick="openApp('bookcollection')">
-                    <span class="menu-icon bookcollection"><i class="fas fa-book"></i></span>
-                    <div class="menu-name">📚 Book Collection</div>
-                    <div class="menu-desc">Kelola koleksi buku fisik & digital</div>
                 </div>
             </div>
             <!-- TOMBOL BACKUP & RESTORE -->
@@ -5221,7 +3429,7 @@
         // NAVIGASI UTAMA
         // ============================================
         function openApp(app) {
-            localStorage.setItem('lastApp', app); // simpan aplikasi terakhir
+            localStorage.setItem('lastApp', app);
             document.getElementById('mainMenu').style.display = 'none';
             const container = document.getElementById('appContainer');
             container.classList.add('show');
@@ -5235,15 +3443,12 @@
                 }
             } else if (app === 'pedoman') {
                 document.body.classList.add('pedoman-mode');
-            } else if (app === 'bookcollection') {
-                document.body.classList.add('book-collection-mode');
             }
 
             const content = document.getElementById('appContent');
             if (app === 'materi') loadMateri(content);
             else if (app === 'english') loadEnglish(content);
             else if (app === 'pedoman') loadPedoman(content);
-            else if (app === 'bookcollection') loadBookCollection(content);
         }
 
         function goHome() {
@@ -6385,76 +4590,53 @@
         }
 
         // ============================================
-        // PEDOMAN HIDUP APP — SUDAH DIPERBAIKI
+        // PEDOMAN HIDUP APP — STORAGE SEPERTI MATERI
         // ============================================
-        let pedomanState = { folders: {} };
+        let pedomanFolders = [];
+        let pedomanContents = {};
         let currentPedomanFolderId = null;
         let pedomanActiveTab = 'tab-surah';
         let pedomanSearchQuery = '';
 
-        // ===== PERBAIKAN: Fungsi load & save lebih robust =====
-        function savePedomanState() {
-            try {
-                localStorage.setItem('pedoman_hidup_data', JSON.stringify(pedomanState));
-            } catch (_) {}
+        // ===== SAVE/LOAD PEDOMAN (sama seperti Materi) =====
+        function savePedomanData() {
+            localStorage.setItem('pedoman_folders', JSON.stringify(pedomanFolders));
+            localStorage.setItem('pedoman_contents', JSON.stringify(pedomanContents));
         }
 
-        function loadPedomanState() {
-            try {
-                const raw = localStorage.getItem('pedoman_hidup_data');
-                if (raw) {
-                    const parsed = JSON.parse(raw);
-                    // Validasi struktur minimal
-                    if (parsed && typeof parsed === 'object' && parsed.folders) {
-                        pedomanState = parsed;
-                        return true;
-                    }
-                }
-            } catch (_) {}
+        function loadPedomanData() {
+            const f = localStorage.getItem('pedoman_folders');
+            const c = localStorage.getItem('pedoman_contents');
+            if (f && c) {
+                pedomanFolders = JSON.parse(f);
+                pedomanContents = JSON.parse(c);
+                return true;
+            }
             return false;
         }
 
-        function loadPedoman(el) {
-            // *** PERBAIKAN: Muat data dari localStorage dulu, jika gagal buat default ***
-            const hasData = loadPedomanState();
-
-            if (!hasData || Object.keys(pedomanState.folders).length === 0) {
-                // Buat folder default hanya jika benar-benar tidak ada data
-                const id = generatePedomanId();
-                pedomanState.folders[id] = {
-                    id,
+        function initPedomanData() {
+            if (!loadPedomanData()) {
+                const id = 'pf' + Date.now();
+                pedomanFolders = [{
+                    id: id,
                     name: 'Al-Fatihah',
-                    surah: { items: [
-                            { id: generatePedomanId(), image: null,
-                                caption: 'بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ\nالْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ\nالرَّحْمَـٰنِ الرَّحِيمِ\nمَالِكِ يَوْمِ الدِّينِ\nإِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ\nاهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ\nصِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ' }
-                        ] },
-                    asbab: { content: 'Surat Al-Fatihah diturunkan di Mekkah. Menurut sebagian ulama, surat ini diturunkan setelah surat Al-Muddassir. Surat ini disebut juga Ummul Quran (Induk Al-Quran) karena menjadi pembuka dan inti dari seluruh isi Al-Quran.' },
-                    makna: { content: 'Surat Al-Fatihah mengandung 7 ayat yang merupakan rangkuman dari seluruh ajaran Islam. Kandungan utamanya adalah pujian kepada Allah, pengakuan bahwa hanya Allah yang berhak disembah, permohonan petunjuk ke jalan yang lurus, serta doa agar terhindar dari kesesatan.' },
-                    _gradient: 'linear-gradient(135deg, #6C3CE1, #8B5CF6)',
-                    _icon: 'fa-quran'
-                };
-                savePedomanState();
+                    tags: ['Pembuka', 'Ummul Quran'],
+                    favorite: false,
+                    gradient: 'linear-gradient(135deg, #6C3CE1, #8B5CF6)',
+                    icon: 'fa-quran'
+                }];
+                pedomanContents = {};
+                pedomanContents[id] = [
+                    { id: 'pc' + Date.now() + 'a', type: 'surah', name: 'Gambar Surah', dataUrl: '',
+                        content: 'بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ\nالْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ\nالرَّحْمَـٰنِ الرَّحِيمِ\nمَالِكِ يَوْمِ الدِّينِ\nإِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ\nاهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ\nصِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ' },
+                    { id: 'pc' + Date.now() + 'b', type: 'asbab', name: 'Asbabun Nuzul',
+                        content: 'Surat Al-Fatihah diturunkan di Mekkah. Menurut sebagian ulama, surat ini diturunkan setelah surat Al-Muddassir. Surat ini disebut juga Ummul Quran (Induk Al-Quran) karena menjadi pembuka dan inti dari seluruh isi Al-Quran.' },
+                    { id: 'pc' + Date.now() + 'c', type: 'makna', name: 'Makna Surah',
+                        content: 'Surat Al-Fatihah mengandung 7 ayat yang merupakan rangkuman dari seluruh ajaran Islam. Kandungan utamanya adalah pujian kepada Allah, pengakuan bahwa hanya Allah yang berhak disembah, permohonan petunjuk ke jalan yang lurus, serta doa agar terhindar dari kesesatan.' }
+                ];
+                savePedomanData();
             }
-
-            // Pastikan semua folder memiliki struktur yang benar
-            for (const id in pedomanState.folders) {
-                const f = pedomanState.folders[id];
-                if (!f.surah || typeof f.surah !== 'object') f.surah = { items: [] };
-                if (!f.asbab || typeof f.asbab !== 'object') f.asbab = { content: '' };
-                if (!f.makna || typeof f.makna !== 'object') f.makna = { content: '' };
-                if (!Array.isArray(f.surah.items)) f.surah.items = [];
-                if (typeof f.asbab.content !== 'string') f.asbab.content = '';
-                if (typeof f.makna.content !== 'string') f.makna.content = '';
-                if (!f._gradient) f._gradient = getPedomanGradient();
-                if (!f._icon) f._icon = getPedomanIcon();
-            }
-            savePedomanState();
-
-            renderPedomanApp(el);
-        }
-
-        function generatePedomanId() {
-            return Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 8);
         }
 
         // ===== FUNGSI GET GRADIENT & ICON =====
@@ -6484,6 +4666,10 @@
             return icons[Math.floor(Math.random() * icons.length)];
         }
 
+        function generatePedomanId() {
+            return 'pf' + Date.now() + '_' + Math.random().toString(36).slice(2, 6);
+        }
+
         function escapeHtml(text) {
             if (!text) return '';
             const div = document.createElement('div');
@@ -6502,20 +4688,21 @@
         }
 
         // ===== RENDER PEDOMAN APP =====
+        function loadPedoman(el) {
+            initPedomanData();
+            renderPedomanApp(el);
+        }
+
         function renderPedomanApp(el) {
-            loadPedomanState();
-            for (const id in pedomanState.folders) {
-                const f = pedomanState.folders[id];
-                if (!f.surah || typeof f.surah !== 'object') f.surah = { items: [] };
-                if (!f.asbab || typeof f.asbab !== 'object') f.asbab = { content: '' };
-                if (!f.makna || typeof f.makna !== 'object') f.makna = { content: '' };
-                if (typeof f.surah.items === 'undefined') f.surah.items = [];
-                if (typeof f.asbab.content === 'undefined') f.asbab.content = '';
-                if (typeof f.makna.content === 'undefined') f.makna.content = '';
-                if (!f._gradient) f._gradient = getPedomanGradient();
-                if (!f._icon) f._icon = getPedomanIcon();
+            // pastikan data valid
+            loadPedomanData();
+            for (const f of pedomanFolders) {
+                if (!f.gradient) f.gradient = getPedomanGradient();
+                if (!f.icon) f.icon = getPedomanIcon();
+                if (!f.tags) f.tags = [];
+                if (!pedomanContents[f.id]) pedomanContents[f.id] = [];
             }
-            savePedomanState();
+            savePedomanData();
 
             el.innerHTML = `
                 <div class="pedoman-app">
@@ -6692,16 +4879,16 @@
                     name) => {
                     if (name.trim()) {
                         const id = generatePedomanId();
-                        pedomanState.folders[id] = {
+                        pedomanFolders.push({
                             id,
                             name: name.trim(),
-                            surah: { items: [] },
-                            asbab: { content: '' },
-                            makna: { content: '' },
-                            _gradient: getPedomanGradient(),
-                            _icon: getPedomanIcon()
-                        };
-                        savePedomanState();
+                            tags: [],
+                            favorite: false,
+                            gradient: getPedomanGradient(),
+                            icon: getPedomanIcon()
+                        });
+                        pedomanContents[id] = [];
+                        savePedomanData();
                         renderPedomanFolders();
                         showPedomanToast(`Folder "${name.trim()}" berhasil dibuat`, 'fa-folder-plus', '#6C3CE1');
                     }
@@ -6836,17 +5023,13 @@
             if (!grid) return;
 
             const query = pedomanSearchQuery.toLowerCase().trim();
-            const ids = Object.keys(pedomanState.folders);
-            let filteredIds = ids;
+            let filtered = pedomanFolders;
             if (query) {
-                filteredIds = ids.filter(id => {
-                    const f = pedomanState.folders[id];
-                    return f && f.name && f.name.toLowerCase().includes(query);
-                });
+                filtered = pedomanFolders.filter(f => f.name.toLowerCase().includes(query));
             }
 
-            if (filteredIds.length === 0) {
-                const msg = ids.length === 0 ?
+            if (filtered.length === 0) {
+                const msg = pedomanFolders.length === 0 ?
                     'Belum ada folder. Buat folder baru untuk mulai mencatat pedoman hidup.' :
                     'Tidak ada folder yang cocok dengan pencarian.';
                 grid.innerHTML = `<div class="empty-state"><i class="fas fa-folder-open"></i><p>${msg}</p></div>`;
@@ -6854,23 +5037,21 @@
                 return;
             }
 
-            count.textContent = `${filteredIds.length} folder${filteredIds.length > 1 ? '' : ''}`;
+            count.textContent = `${filtered.length} folder${filtered.length > 1 ? '' : ''}`;
 
             let html = '';
-            for (const id of filteredIds) {
-                const f = pedomanState.folders[id];
-                if (!f._gradient) f._gradient = getPedomanGradient();
-                if (!f._icon) f._icon = getPedomanIcon();
-                const surahItems = f.surah?.items || [];
-                const hasSurah = surahItems.some(item => item.image || (item.caption && item.caption.trim()));
-                const hasAsbab = f.asbab?.content && f.asbab.content.trim().length > 0;
-                const hasMakna = f.makna?.content && f.makna.content.trim().length > 0;
+            for (const f of filtered) {
+                const items = pedomanContents[f.id] || [];
+                const hasSurah = items.some(item => item.type === 'surah' && (item.dataUrl || (item.content && item
+                    .content.trim())));
+                const hasAsbab = items.some(item => item.type === 'asbab' && item.content && item.content.trim());
+                const hasMakna = items.some(item => item.type === 'makna' && item.content && item.content.trim());
                 const noteCount = (hasSurah ? 1 : 0) + (hasAsbab ? 1 : 0) + (hasMakna ? 1 : 0);
 
                 html += `
-                        <div class="folder-card" data-id="${id}" style="background: ${f._gradient};">
-                            <button class="delete-folder-btn" data-id="${id}" title="Hapus folder"><i class="fas fa-times"></i></button>
-                            <div class="folder-icon"><i class="fas ${f._icon}"></i></div>
+                        <div class="folder-card" data-id="${f.id}" style="background: ${f.gradient || getPedomanGradient()};">
+                            <button class="delete-folder-btn" data-id="${f.id}" title="Hapus folder"><i class="fas fa-times"></i></button>
+                            <div class="folder-icon"><i class="fas ${f.icon || 'fa-folder'}"></i></div>
                             <div class="folder-name">${escapeHtml(f.name)}</div>
                             <div class="folder-meta"><i class="fas fa-book" style="margin-right:4px;"></i> ${noteCount > 0 ? `${noteCount} catatan` : 'Kosong'}</div>
                         </div>
@@ -6896,7 +5077,7 @@
         }
 
         function openPedomanDetail(folderId) {
-            if (!folderId || !pedomanState.folders[folderId]) {
+            if (!folderId || !pedomanFolders.find(f => f.id === folderId)) {
                 showPedomanToast('Folder tidak ditemukan', 'fa-exclamation-circle', '#f59e0b');
                 return;
             }
@@ -6914,16 +5095,20 @@
         }
 
         function renderPedomanDetail(folderId) {
-            const f = pedomanState.folders[folderId];
+            const f = pedomanFolders.find(f => f.id === folderId);
             if (!f) return;
             document.getElementById('pedoman-detail-title').textContent = f.name;
 
             renderPedomanSurahGallery(folderId);
 
+            const items = pedomanContents[folderId] || [];
+            const asbabItem = items.find(item => item.type === 'asbab');
+            const maknaItem = items.find(item => item.type === 'makna');
+
             const asbabEditor = document.getElementById('pedoman-asbab-editor');
             const maknaEditor = document.getElementById('pedoman-makna-editor');
-            asbabEditor.innerHTML = f.asbab?.content || '';
-            maknaEditor.innerHTML = f.makna?.content || '';
+            asbabEditor.innerHTML = asbabItem ? (asbabItem.content || '') : '';
+            maknaEditor.innerHTML = maknaItem ? (maknaItem.content || '') : '';
 
             updatePedomanGlobalSaveIndicator(true);
             activatePedomanTab(pedomanActiveTab);
@@ -6934,11 +5119,9 @@
         }
 
         function renderPedomanSurahGallery(folderId) {
-            const f = pedomanState.folders[folderId];
-            if (!f) return;
             const container = document.getElementById('pedoman-surah-gallery');
             if (!container) return;
-            const items = f.surah?.items || [];
+            const items = (pedomanContents[folderId] || []).filter(item => item.type === 'surah');
 
             if (items.length === 0) {
                 container.innerHTML =
@@ -6949,14 +5132,14 @@
             let html = '';
             for (let i = 0; i < items.length; i++) {
                 const item = items[i];
-                const imgHtml = item.image ?
-                    `<div class="surah-img-wrap"><img src="${escapeHtml(item.image)}" alt="Gambar surah" loading="lazy" /><div class="resize-hint"><i class="fas fa-expand"></i> seret sudut</div></div>` :
+                const imgHtml = item.dataUrl ?
+                    `<div class="surah-img-wrap"><img src="${escapeHtml(item.dataUrl)}" alt="Gambar surah" loading="lazy" /><div class="resize-hint"><i class="fas fa-expand"></i> seret sudut</div></div>` :
                     `<div style="background:rgba(255,255,255,0.04);border-radius:12px;padding:24px;text-align:center;color:rgba(255,255,255,0.2);margin-bottom:12px;"><i class="fas fa-image" style="font-size:2rem;"></i><p style="font-size:0.8rem;margin-top:4px;">Tidak ada gambar</p></div>`;
                 html += `
                         <div class="surah-item" data-index="${i}">
                             <button class="delete-surah-btn" data-index="${i}" title="Hapus"><i class="fas fa-times"></i></button>
                             ${imgHtml}
-                            <textarea class="caption-area" data-index="${i}" placeholder="Tulis catatan untuk gambar ini…" spellcheck="false">${escapeHtml(item.caption || '')}</textarea>
+                            <textarea class="caption-area" data-index="${i}" placeholder="Tulis catatan untuk gambar ini…" spellcheck="false">${escapeHtml(item.content || '')}</textarea>
                         </div>
                     `;
             }
@@ -6992,40 +5175,44 @@
         function debounceSavePedomanCaption(folderId, index, value) {
             clearTimeout(pedomanCaptionTimeout);
             pedomanCaptionTimeout = setTimeout(() => {
-                const f = pedomanState.folders[folderId];
-                if (!f || !f.surah || !f.surah.items || index >= f.surah.items.length) return;
-                f.surah.items[index].caption = value;
-                savePedomanState();
+                const items = pedomanContents[folderId] || [];
+                const surahItems = items.filter(item => item.type === 'surah');
+                if (index >= surahItems.length) return;
+                surahItems[index].content = value;
+                savePedomanData();
                 updatePedomanGlobalSaveIndicator(true);
             }, 500);
             updatePedomanGlobalSaveIndicator(false);
         }
 
-        // ===== PERBAIKAN: Hapus item surah =====
         function deletePedomanSurahItem(folderId, index) {
-            const f = pedomanState.folders[folderId];
-            if (!f || !f.surah || !f.surah.items || index >= f.surah.items.length) return;
-            // Hapus item dari array
-            f.surah.items.splice(index, 1);
-            savePedomanState(); // langsung simpan
-            renderPedomanSurahGallery(folderId); // render ulang galeri
+            const items = pedomanContents[folderId] || [];
+            const surahItems = items.filter(item => item.type === 'surah');
+            if (index >= surahItems.length) return;
+            const targetId = surahItems[index].id;
+            const newItems = items.filter(item => item.id !== targetId);
+            pedomanContents[folderId] = newItems;
+            savePedomanData();
+            renderPedomanSurahGallery(folderId);
             showPedomanToast('Item surah dihapus', 'fa-trash-alt', '#f59e0b');
         }
 
         function addPedomanSurahImages(folderId, files) {
-            const f = pedomanState.folders[folderId];
-            if (!f) return;
-            if (!f.surah) f.surah = { items: [] };
-            if (!f.surah.items) f.surah.items = [];
-
+            if (!pedomanContents[folderId]) pedomanContents[folderId] = [];
             let loaded = 0;
             for (const file of files) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    f.surah.items.push({ id: generatePedomanId(), image: e.target.result, caption: '' });
+                    pedomanContents[folderId].push({
+                        id: 'pc' + Date.now() + '_' + Math.random().toString(36).slice(2, 5),
+                        type: 'surah',
+                        name: file.name,
+                        dataUrl: e.target.result,
+                        content: ''
+                    });
                     loaded++;
                     if (loaded === files.length) {
-                        savePedomanState();
+                        savePedomanData();
                         renderPedomanSurahGallery(folderId);
                         showPedomanToast(`${files.length} gambar berhasil ditambahkan`, 'fa-image', '#6C3CE1');
                     }
@@ -7053,18 +5240,18 @@
             if (tabId === 'tab-asbab' || tabId === 'tab-makna') {
                 setTimeout(() => {
                     if (currentPedomanFolderId) {
-                        const f = pedomanState.folders[currentPedomanFolderId];
-                        if (f) {
-                            const editorId = tabId === 'tab-asbab' ? 'pedoman-asbab-editor' :
-                                'pedoman-makna-editor';
-                            const editor = document.getElementById(editorId);
-                            const content = tabId === 'tab-asbab' ? f.asbab?.content : f.makna?.content;
-                            if (editor && editor.innerHTML !== (content || '')) {
-                                editor.innerHTML = content || '';
-                                bindPedomanEditorImageInteractions(editor);
-                            } else if (editor) {
-                                bindPedomanEditorImageInteractions(editor);
-                            }
+                        const items = pedomanContents[currentPedomanFolderId] || [];
+                        const editorId = tabId === 'tab-asbab' ? 'pedoman-asbab-editor' :
+                            'pedoman-makna-editor';
+                        const editor = document.getElementById(editorId);
+                        const type = tabId === 'tab-asbab' ? 'asbab' : 'makna';
+                        const item = items.find(i => i.type === type);
+                        const content = item ? (item.content || '') : '';
+                        if (editor && editor.innerHTML !== content) {
+                            editor.innerHTML = content;
+                            bindPedomanEditorImageInteractions(editor);
+                        } else if (editor) {
+                            bindPedomanEditorImageInteractions(editor);
                         }
                     }
                 }, 80);
@@ -7083,20 +5270,26 @@
 
         function savePedomanEditorContent(editorName) {
             if (!currentPedomanFolderId) return;
-            const f = pedomanState.folders[currentPedomanFolderId];
-            if (!f) return;
             const editor = document.getElementById('pedoman-' + editorName + '-editor');
             if (!editor) return;
             editor.querySelectorAll('.img-wrap').forEach(w => { if (!w.querySelector('img')) w.remove(); });
             const content = editor.innerHTML.trim();
-            if (editorName === 'asbab') {
-                if (!f.asbab) f.asbab = { content: '' };
-                f.asbab.content = content;
-            } else if (editorName === 'makna') {
-                if (!f.makna) f.makna = { content: '' };
-                f.makna.content = content;
+            const items = pedomanContents[currentPedomanFolderId] || [];
+            const type = editorName === 'asbab' ? 'asbab' : 'makna';
+            let existing = items.find(i => i.type === type);
+            if (existing) {
+                existing.content = content;
+            } else {
+                items.push({
+                    id: 'pc' + Date.now() + '_' + Math.random().toString(36).slice(2, 5),
+                    type: type,
+                    name: type === 'asbab' ? 'Asbabun Nuzul' : 'Makna Surah',
+                    content: content,
+                    dataUrl: ''
+                });
             }
-            savePedomanState();
+            pedomanContents[currentPedomanFolderId] = items;
+            savePedomanData();
             updatePedomanGlobalSaveIndicator(true);
         }
 
@@ -7362,12 +5555,13 @@
         }
 
         function confirmDeletePedomanFolder(id) {
-            const f = pedomanState.folders[id];
+            const f = pedomanFolders.find(f => f.id === id);
             if (!f) return;
             openPedomanModal('Hapus Folder?', `Apakah Anda yakin ingin menghapus folder "${f.name}"? Semua data di dalamnya akan hilang.`,
                 'Hapus', () => {
-                    delete pedomanState.folders[id];
-                    savePedomanState();
+                    pedomanFolders = pedomanFolders.filter(f => f.id !== id);
+                    delete pedomanContents[id];
+                    savePedomanData();
                     showPedomanToast(`Folder "${f.name}" telah dihapus`, 'fa-trash', '#FF6B6B');
                     if (currentPedomanFolderId === id) goPedomanHome();
                     else renderPedomanFolders();
@@ -7459,1227 +5653,6 @@
         }
 
         // ============================================
-        // BOOK COLLECTION APP — FIXED VERSION (tidak diubah, sudah pakai localStorage)
-        // ============================================
-        function loadBookCollection(el) {
-            let bcBooks = [];
-            let bcCategories = [];
-            let bcCurrentFilter = 'semua';
-            let bcCurrentCategory = 'semua';
-            let bcSearchQuery = '';
-            let bcCoverCache = {};
-            let bcFormType = 'fisik';
-            let bcCurrentDetailId = null;
-
-            const DEFAULT_CATEGORIES = ['📘 Modul Belajar', '📗 Pengembangan Diri', '📕 Cerita & Novel', '📙 Lainnya'];
-
-            function bcLoadData() {
-                try {
-                    const raw = localStorage.getItem('bookCollection');
-                    bcBooks = raw ? JSON.parse(raw) : [];
-                } catch { bcBooks = []; }
-                try {
-                    const rawCat = localStorage.getItem('bookCategories');
-                    if (rawCat) {
-                        const parsed = JSON.parse(rawCat);
-                        bcCategories = parsed.length ? parsed : [...DEFAULT_CATEGORIES];
-                    } else {
-                        bcCategories = [...DEFAULT_CATEGORIES];
-                    }
-                } catch { bcCategories = [...DEFAULT_CATEGORIES]; }
-                bcBooks.forEach(b => {
-                    if (!b.highlights) b.highlights = [];
-                    if (!b.rating) b.rating = 0;
-                    if (!b.genre) b.genre = '';
-                    if (!b.cover) b.cover = '';
-                    if (!b.ringkasan) b.ringkasan = '';
-                    if (b.favorit === undefined) b.favorit = false;
-                    if (!b.status) b.status = 'sedang';
-                    if (!b.kategori) b.kategori = '📙 Lainnya';
-                    if (!b.harga) b.harga = '';
-                    if (b.tipe === undefined) b.tipe = 'fisik';
-                    if (!b.pdfData) b.pdfData = '';
-                    if (!b.pdfName) b.pdfName = '';
-                });
-                bcBooks.forEach(b => {
-                    if (b.kategori && !bcCategories.includes(b.kategori)) {
-                        bcCategories.push(b.kategori);
-                    }
-                });
-                bcSaveCategories();
-                bcSaveData();
-            }
-
-            function bcSaveData() {
-                localStorage.setItem('bookCollection', JSON.stringify(bcBooks));
-                bcUpdateCount();
-            }
-
-            function bcSaveCategories() {
-                localStorage.setItem('bookCategories', JSON.stringify(bcCategories));
-            }
-
-            function bcUpdateCount() {
-                const el = document.querySelector('.bc-count-badge');
-                if (el) el.textContent = bcBooks.length;
-            }
-
-            function bcEscapeHtml(text) {
-                if (!text) return '';
-                return String(text).replace(/[&<>"]/g, function(m) {
-                    if (m === '&') return '&amp;';
-                    if (m === '<') return '&lt;';
-                    if (m === '>') return '&gt;';
-                    if (m === '"') return '&quot;';
-                    return m;
-                });
-            }
-
-            function bcShowToast(message, icon = '✅') {
-                const toast = document.querySelector('.bc-toast');
-                const toastMsg = document.querySelector('.bc-toast-message');
-                const toastIcon = document.querySelector('.bc-toast-icon');
-                if (!toast) return;
-                toastMsg.textContent = message;
-                toastIcon.textContent = icon;
-                toast.classList.add('show');
-                clearTimeout(toast._timer);
-                toast._timer = setTimeout(() => toast.classList.remove('show'), 2800);
-            }
-
-            function bcRender() {
-                bcRenderCategories();
-                let filtered = [...bcBooks];
-                if (bcSearchQuery) {
-                    const q = bcSearchQuery.toLowerCase();
-                    filtered = filtered.filter(b =>
-                        b.judul.toLowerCase().includes(q) ||
-                        b.penulis.toLowerCase().includes(q)
-                    );
-                }
-                if (bcCurrentCategory !== 'semua') {
-                    filtered = filtered.filter(b => b.kategori === bcCurrentCategory);
-                }
-                if (bcCurrentFilter === 'favorit') {
-                    filtered = filtered.filter(b => b.favorit);
-                } else if (bcCurrentFilter === 'digital') {
-                    filtered = filtered.filter(b => b.tipe === 'digital');
-                } else if (bcCurrentFilter === 'selesai') {
-                    filtered = filtered.filter(b => b.status === 'selesai');
-                } else if (bcCurrentFilter === 'sedang') {
-                    filtered = filtered.filter(b => b.status === 'sedang');
-                } else if (bcCurrentFilter === 'ingin') {
-                    filtered = filtered.filter(b => b.status === 'ingin');
-                }
-                filtered.sort((a, b) => {
-                    if (a.favorit && !b.favorit) return -1;
-                    if (!a.favorit && b.favorit) return 1;
-                    return (b.id || 0) - (a.id || 0);
-                });
-
-                const grid = document.getElementById('bcBookGrid');
-                if (!grid) return;
-                if (filtered.length === 0) {
-                    grid.innerHTML = `
-                        <div class="bc-empty-state">
-                            <div class="bc-emoji">${bcSearchQuery ? '🔍' : '📚'}</div>
-                            <h3>${bcSearchQuery ? 'Tidak ditemukan' : 'Koleksi masih kosong'}</h3>
-                            <p>${bcSearchQuery ? `Tidak ada buku dengan judul atau penulis "${bcSearchQuery}".` : 'Mulai tambahkan buku bacaanmu sekarang!'}</p>
-                        </div>
-                    `;
-                    bcUpdateCount();
-                    return;
-                }
-
-                grid.innerHTML = filtered.map(b => {
-                    const isDigital = b.tipe === 'digital';
-                    const coverStyle = b.cover ? `background-image: url('${bcEscapeHtml(b.cover)}');` : '';
-                    const ratingStr = '★'.repeat(Math.min(b.rating || 0, 5)) + '☆'.repeat(5 - Math.min(b.rating || 0,
-                    5));
-                    const statusClass = b.status || 'sedang';
-                    const statusLabel = { selesai: 'Selesai', sedang: 'Sedang', ingin: 'Ingin' } [statusClass] ||
-                        'Sedang';
-                    const priceDisplay = b.harga ? `💰 ${b.harga}` : '';
-                    const digitalBadge = isDigital ?
-                        '<span class="bc-card-badge-digital">📱 Digital</span>' : '';
-                    const coverInner = b.cover ? '' :
-                        `<span class="bc-cover-initials">${(b.judul || '?').charAt(0).toUpperCase()}${(b.penulis || '?').charAt(0).toUpperCase()}</span>`;
-                    const coverBadge = isDigital ?
-                        `<span class="bc-cover-badge">📱 E-Book</span>` :
-                        `<span class="bc-cover-badge">📷 Cover</span>`;
-                    const downloadBtn = isDigital && b.pdfData ?
-                        `<button class="bc-download-btn" data-id="${b.id}">📥 PDF</button>` : '';
-                    return `
-                        <div class="bc-book-card ${isDigital ? 'is-digital' : ''}" data-id="${b.id}">
-                            <div class="bc-card-top">
-                                <span class="bc-card-category">${bcEscapeHtml(b.kategori || '📙 Lainnya')}</span>
-                                <button class="bc-fav-star ${b.favorit ? 'active' : ''}" data-id="${b.id}">${b.favorit ? '★' : '☆'}</button>
-                            </div>
-                            <div class="bc-book-cover" style="${coverStyle}">
-                                ${coverInner}
-                                ${coverBadge}
-                                ${isDigital ? '<span style="position:absolute;top:8px;left:8px;font-size:1.8rem;opacity:0.3;">📱</span>' : ''}
-                            </div>
-                            <div style="display:flex;align-items:center;gap:8px;margin-bottom:2px;">
-                                <div class="bc-book-title">${bcEscapeHtml(b.judul)}</div>
-                                ${digitalBadge}
-                            </div>
-                            <div class="bc-book-author">${bcEscapeHtml(b.penulis)}</div>
-                            ${!isDigital && priceDisplay ? `<div class="bc-book-price">${bcEscapeHtml(priceDisplay)}</div>` : ''}
-                            ${isDigital && b.pdfName ? `<div style="font-size:0.7rem;color:var(--bc-text-muted);">📄 ${bcEscapeHtml(b.pdfName)}</div>` : ''}
-                            <div class="bc-book-meta">
-                                <span class="bc-book-rating">${ratingStr}</span>
-                                <span class="bc-book-status ${statusClass}">${statusLabel}</span>
-                            </div>
-                            <div class="bc-card-actions">
-                                <button class="bc-detail-btn" data-id="${b.id}">📖 Detail</button>
-                                ${downloadBtn}
-                                <button class="bc-delete-btn" data-id="${b.id}">🗑️</button>
-                            </div>
-                        </div>
-                    `;
-                }).join('');
-
-                grid.querySelectorAll('.bc-fav-star').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        const id = parseInt(btn.dataset.id);
-                        if (!isNaN(id)) bcToggleFavorit(id);
-                    });
-                });
-                grid.querySelectorAll('.bc-detail-btn').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        const id = parseInt(btn.dataset.id);
-                        if (!isNaN(id)) bcOpenDetail(id);
-                    });
-                });
-                grid.querySelectorAll('.bc-delete-btn').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        const id = parseInt(btn.dataset.id);
-                        if (!isNaN(id)) {
-                            const book = bcBooks.find(b => b.id === id);
-                            if (book && confirm(`Hapus buku "${book.judul}"?`)) {
-                                bcDeleteBook(id);
-                            }
-                        }
-                    });
-                });
-                grid.querySelectorAll('.bc-download-btn').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        const id = parseInt(btn.dataset.id);
-                        if (!isNaN(id)) bcDownloadPdf(id);
-                    });
-                });
-                grid.querySelectorAll('.bc-book-card').forEach(card => {
-                    card.addEventListener('click', () => {
-                        const id = parseInt(card.dataset.id);
-                        if (!isNaN(id)) bcOpenDetail(id);
-                    });
-                });
-
-                document.querySelectorAll('.bc-filter-btn').forEach(btn => {
-                    btn.classList.toggle('active', btn.dataset.filter === bcCurrentFilter);
-                });
-                bcUpdateCount();
-            }
-
-            function bcRenderCategories() {
-                const allCount = bcBooks.length;
-                const container = document.getElementById('bcCategoryTabs');
-                if (!container) return;
-                let html = `
-                    <button class="bc-cat-btn ${bcCurrentCategory === 'semua' ? 'active' : ''}" data-cat="semua">
-                        <span class="bc-folder-icon">📁</span> Semua
-                        <span class="bc-cat-count">${allCount}</span>
-                    </button>
-                `;
-                bcCategories.forEach(cat => {
-                    const count = bcBooks.filter(b => b.kategori === cat).length;
-                    const isActive = bcCurrentCategory === cat;
-                    html += `
-                        <button class="bc-cat-btn ${isActive ? 'active' : ''}" data-cat="${bcEscapeHtml(cat)}">
-                            <span class="bc-folder-icon">${bcGetCategoryIcon(cat)}</span>
-                            ${bcEscapeHtml(cat)}
-                            <span class="bc-cat-count">${count}</span>
-                            <button class="bc-del-cat" data-cat="${bcEscapeHtml(cat)}">✕</button>
-                        </button>
-                    `;
-                });
-                html += `
-                    <button class="bc-cat-btn bc-add-cat" id="bcBtnAddCategoryTab">
-                        <span>➕</span> Buat Folder
-                    </button>
-                `;
-                container.innerHTML = html;
-
-                container.querySelectorAll('.bc-cat-btn[data-cat]').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        if (e.target.closest('.bc-del-cat')) return;
-                        const cat = btn.dataset.cat;
-                        if (bcCurrentCategory === cat) return;
-                        bcCurrentCategory = cat;
-                        bcRender();
-                    });
-                });
-                container.querySelectorAll('.bc-del-cat').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        const cat = btn.dataset.cat;
-                        const count = bcBooks.filter(b => b.kategori === cat).length;
-                        if (count > 0) {
-                            bcShowToast(`Folder "${cat}" masih berisi ${count} buku`, '⚠️');
-                            return;
-                        }
-                        if (bcCategories.length <= 1) {
-                            bcShowToast('Minimal 1 folder harus ada', '⚠️');
-                            return;
-                        }
-                        if (confirm(`Hapus folder "${cat}"?`)) {
-                            bcCategories = bcCategories.filter(c => c !== cat);
-                            if (bcCurrentCategory === cat) bcCurrentCategory = 'semua';
-                            bcSaveCategories();
-                            bcRender();
-                            bcShowToast(`Folder "${cat}" dihapus`, '🗑️');
-                        }
-                    });
-                });
-                const addBtn = container.querySelector('#bcBtnAddCategoryTab');
-                if (addBtn) {
-                    addBtn.addEventListener('click', () => {
-                        const name = prompt('Nama folder baru:');
-                        if (name && name.trim()) {
-                            const trimmed = name.trim();
-                            if (bcCategories.includes(trimmed)) {
-                                bcShowToast(`Folder "${trimmed}" sudah ada`, '⚠️');
-                                return;
-                            }
-                            bcCategories.push(trimmed);
-                            bcSaveCategories();
-                            bcCurrentCategory = trimmed;
-                            bcRender();
-                            bcShowToast(`Folder "${trimmed}" dibuat`, '📂');
-                        }
-                    });
-                }
-            }
-
-            function bcGetCategoryIcon(cat) {
-                const match = cat.match(/^([📘📗📕📙📚📖📓📔📒📕📗📘📙📚📖]+)/);
-                if (match) return match[1];
-                return '📂';
-            }
-
-            async function bcAddBook(data) {
-                let coverData = data.coverData || '';
-                const isDigital = data.tipe === 'digital';
-                if (!isDigital && !coverData) {
-                    try {
-                        const fetched = await bcFetchBookCover(data.judul, data.penulis);
-                        if (fetched) coverData = fetched;
-                    } catch (e) { /* silent */ }
-                }
-                const newBook = {
-                    id: Date.now(),
-                    judul: data.judul.trim(),
-                    penulis: data.penulis.trim(),
-                    genre: data.genre || '',
-                    kategori: data.kategori || '📙 Lainnya',
-                    harga: isDigital ? '' : (data.harga || ''),
-                    status: data.status || 'sedang',
-                    rating: parseInt(data.rating) || 0,
-                    cover: isDigital ? '' : coverData,
-                    ringkasan: data.ringkasan || '',
-                    favorit: false,
-                    highlights: [],
-                    tipe: isDigital ? 'digital' : 'fisik',
-                    pdfData: isDigital ? (data.pdfData || '') : '',
-                    pdfName: isDigital ? (data.pdfName || '') : '',
-                };
-                bcBooks.push(newBook);
-                bcSaveData();
-                bcRender();
-                const typeLabel = isDigital ? 'E-Book' : 'Buku';
-                bcShowToast(`"${newBook.judul}" (${typeLabel}) ditambahkan!`, isDigital ? '📱' : '📚');
-            }
-
-            async function bcUpdateBook(id, data) {
-                const idx = bcBooks.findIndex(b => b.id === id);
-                if (idx === -1) return;
-                const b = bcBooks[idx];
-                const oldTitle = b.judul;
-                const oldAuthor = b.penulis;
-                const isDigital = data.tipe === 'digital';
-                b.judul = data.judul.trim();
-                b.penulis = data.penulis.trim();
-                b.genre = data.genre || '';
-                b.kategori = data.kategori || '📙 Lainnya';
-                b.harga = isDigital ? '' : (data.harga || '');
-                b.status = data.status || 'sedang';
-                b.rating = parseInt(data.rating) || 0;
-                b.ringkasan = data.ringkasan || '';
-                b.tipe = isDigital ? 'digital' : 'fisik';
-                if (!isDigital) {
-                    if (data.coverData) {
-                        b.cover = data.coverData;
-                    } else if (b.judul !== oldTitle || b.penulis !== oldAuthor) {
-                        try {
-                            const fetched = await bcFetchBookCover(b.judul, b.penulis);
-                            if (fetched) b.cover = fetched;
-                        } catch (e) { /* silent */ }
-                    }
-                } else {
-                    b.cover = '';
-                    if (data.pdfData) {
-                        b.pdfData = data.pdfData;
-                        b.pdfName = data.pdfName || 'ebook.pdf';
-                    }
-                }
-                bcSaveData();
-                bcRender();
-                const typeLabel = isDigital ? 'E-Book' : 'Buku';
-                bcShowToast(`"${b.judul}" (${typeLabel}) diperbarui!`, '✏️');
-            }
-
-            function bcDeleteBook(id) {
-                const b = bcBooks.find(book => book.id === id);
-                const title = b ? b.judul : 'Buku';
-                bcBooks = bcBooks.filter(b => b.id !== id);
-                bcSaveData();
-                bcRender();
-                bcShowToast(`"${title}" dihapus`, '🗑️');
-            }
-
-            function bcToggleFavorit(id) {
-                const b = bcBooks.find(book => book.id === id);
-                if (b) {
-                    b.favorit = !b.favorit;
-                    bcSaveData();
-                    bcRender();
-                    bcShowToast(b.favorit ? `"${b.judul}" ditandai favorit` : `"${b.judul}" dihapus dari favorit`, b
-                        .favorit ? '⭐' : '☆');
-                }
-            }
-
-            function bcDownloadPdf(id) {
-                const book = bcBooks.find(b => b.id === id);
-                if (!book || !book.pdfData) {
-                    bcShowToast('File PDF tidak ditemukan!', '⚠️');
-                    return;
-                }
-                try {
-                    const link = document.createElement('a');
-                    link.href = book.pdfData;
-                    link.download = book.pdfName || `${book.judul}.pdf`;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                    bcShowToast(`📥 Mendownload "${book.judul}"`, '📱');
-                } catch (e) {
-                    bcShowToast('Gagal mendownload file', '⚠️');
-                }
-            }
-
-            async function bcFetchBookCover(title, author) {
-                const cacheKey = `${title.toLowerCase().trim()}|${author.toLowerCase().trim()}`;
-                if (bcCoverCache[cacheKey]) return bcCoverCache[cacheKey];
-                try {
-                    const query = `intitle:${encodeURIComponent(title)}+inauthor:${encodeURIComponent(author)}`;
-                    const url = `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=1`;
-                    const response = await fetch(url);
-                    if (!response.ok) throw new Error('API error');
-                    const data = await response.json();
-                    if (data.items && data.items.length > 0) {
-                        const volumeInfo = data.items[0].volumeInfo;
-                        let coverUrl = null;
-                        if (volumeInfo.imageLinks) {
-                            coverUrl = volumeInfo.imageLinks.thumbnail ||
-                                volumeInfo.imageLinks.smallThumbnail ||
-                                volumeInfo.imageLinks.medium;
-                        }
-                        if (coverUrl) {
-                            coverUrl = coverUrl.replace('http:', 'https:')
-                                .replace('&zoom=1', '')
-                                .replace('&edge=curl', '');
-                            bcCoverCache[cacheKey] = coverUrl;
-                            return coverUrl;
-                        }
-                    }
-                    const olUrl =
-                        `https://openlibrary.org/search.json?title=${encodeURIComponent(title)}&author=${encodeURIComponent(author)}&limit=1`;
-                    const olResp = await fetch(olUrl);
-                    if (olResp.ok) {
-                        const olData = await olResp.json();
-                        if (olData.docs && olData.docs.length > 0 && olData.docs[0].cover_i) {
-                            const coverId = olData.docs[0].cover_i;
-                            const olCover = `https://covers.openlibrary.org/b/id/${coverId}-L.jpg`;
-                            bcCoverCache[cacheKey] = olCover;
-                            return olCover;
-                        }
-                    }
-                } catch (error) {
-                    console.warn('Cover fetch failed:', error);
-                }
-                bcCoverCache[cacheKey] = null;
-                return null;
-            }
-
-            function bcOpenDetail(id) {
-                const b = bcBooks.find(book => book.id === id);
-                if (!b) return;
-                bcCurrentDetailId = id;
-                bcRenderDetail(b);
-                const overlay = document.querySelector('.bc-modal-overlay.bc-detail-modal');
-                if (overlay) overlay.classList.add('open');
-            }
-
-            function bcCloseDetail() {
-                const overlay = document.querySelector('.bc-modal-overlay.bc-detail-modal');
-                if (overlay) overlay.classList.remove('open');
-                bcCurrentDetailId = null;
-            }
-
-            function bcRenderDetail(b) {
-                const isDigital = b.tipe === 'digital';
-                const coverStyle = b.cover ? `background-image: url('${bcEscapeHtml(b.cover)}');` : '';
-                const ratingStr = '★'.repeat(Math.min(b.rating || 0, 5)) + '☆'.repeat(5 - Math.min(b.rating || 0, 5));
-                const statusLabel = { selesai: '✅ Selesai', sedang: '📖 Sedang Dibaca', ingin: '📌 Ingin Dibaca' } [b
-                    .status] || 'Sedang';
-                const priceDisplay = b.harga ? `💰 ${b.harga}` : '';
-
-                let highlightsHtml = '';
-                if (b.highlights && b.highlights.length > 0) {
-                    highlightsHtml = b.highlights.map((h, idx) => `
-                        <div class="bc-highlight-item">
-                            <button class="bc-hl-delete" data-idx="${idx}">✕</button>
-                            <strong>📌 Halaman ${bcEscapeHtml(h.halaman)}</strong>
-                            <p>${bcEscapeHtml(h.catatan)}</p>
-                        </div>
-                    `).join('');
-                } else {
-                    highlightsHtml =
-                        '<p style="color:var(--bc-text-muted); font-style:italic;">Belum ada highlight. Tambahkan catatan halaman menarik!</p>';
-                }
-
-                const coverInner = b.cover ? '' :
-                    `<span class="bc-detail-initials">${(b.judul || '?').charAt(0).toUpperCase()}${(b.penulis || '?').charAt(0).toUpperCase()}</span>`;
-                const badge = isDigital ?
-                    `<span class="bc-detail-badge">📱 E-Book</span>` :
-                    `<span class="bc-detail-badge">📕 Fisik</span>`;
-                const downloadSection = isDigital && b.pdfData ? `
-                    <div class="bc-detail-download">
-                        <button class="bc-btn-download" id="bcDetailDownloadBtn">📥 Download PDF</button>
-                        <span style="font-size:0.8rem;color:var(--bc-text-muted);margin-left:12px;">${bcEscapeHtml(b.pdfName || 'ebook.pdf')}</span>
-                    </div>
-                ` : '';
-
-                const container = document.querySelector('.bc-detail-content');
-                if (!container) return;
-                container.innerHTML = `
-                    <div class="bc-detail-cover" style="${coverStyle}">
-                        ${coverInner}
-                        ${badge}
-                    </div>
-                    <div class="bc-detail-title">${bcEscapeHtml(b.judul)}</div>
-                    <div class="bc-detail-author">✍️ ${bcEscapeHtml(b.penulis)}</div>
-                    ${!isDigital && priceDisplay ? `<div class="bc-detail-price">${bcEscapeHtml(priceDisplay)}</div>` : ''}
-                    <div class="bc-detail-meta">
-                        <span>🏷️ ${bcEscapeHtml(b.genre || 'Tanpa genre')}</span>
-                        <span>📂 ${bcEscapeHtml(b.kategori || '📙 Lainnya')}</span>
-                        <span>${statusLabel}</span>
-                        <span class="bc-rating-badge">${ratingStr}</span>
-                        ${b.favorit ? '<span>⭐ Favorit</span>' : ''}
-                        ${isDigital ? '<span>📱 Digital</span>' : ''}
-                    </div>
-                    ${downloadSection}
-
-                    <div class="bc-detail-tabs">
-                        <button class="active" data-tab="ringkasan">📝 Ringkasan</button>
-                        <button data-tab="highlights">🔖 Highlight (${b.highlights ? b.highlights.length : 0})</button>
-                    </div>
-
-                    <div class="bc-detail-tab-content active" id="bc-tab-ringkasan">
-                        <p>${bcEscapeHtml(b.ringkasan) || '<em style="color:var(--bc-text-muted);">Belum ada ringkasan.</em>'}</p>
-                    </div>
-                    <div class="bc-detail-tab-content" id="bc-tab-highlights">
-                        ${highlightsHtml}
-                        <div class="bc-add-highlight-form">
-                            <input type="text" id="bcHlHalaman" placeholder="Halaman (misal: 42)" />
-                            <input type="text" id="bcHlCatatan" placeholder="Catatan highlight..." />
-                            <button id="bcBtnAddHighlight">+ Tambah</button>
-                        </div>
-                    </div>
-
-                    <div style="margin-top:20px; display:flex; gap:12px; justify-content:flex-end; border-top:1px solid var(--bc-border); padding-top:16px; flex-wrap:wrap;">
-                        <button class="bc-btn-outline" id="bcDetailEditBtn" style="border-color:var(--bc-gold); color:var(--bc-accent);">✏️ Edit</button>
-                        <button class="bc-btn-danger" id="bcDetailDeleteBtn">🗑️ Hapus Buku</button>
-                    </div>
-                `;
-
-                container.querySelectorAll('.bc-detail-tabs button').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        container.querySelectorAll('.bc-detail-tabs button').forEach(b => b.classList.remove(
-                            'active'));
-                        btn.classList.add('active');
-                        const tab = btn.dataset.tab;
-                        container.querySelectorAll('.bc-detail-tab-content').forEach(el => el.classList.remove(
-                            'active'));
-                        const target = document.getElementById(`bc-tab-${tab}`);
-                        if (target) target.classList.add('active');
-                    });
-                });
-
-                const btnAdd = container.querySelector('#bcBtnAddHighlight');
-                if (btnAdd) {
-                    btnAdd.addEventListener('click', () => {
-                        const halaman = container.querySelector('#bcHlHalaman').value.trim();
-                        const catatan = container.querySelector('#bcHlCatatan').value.trim();
-                        if (!halaman || !catatan) {
-                            bcShowToast('Isi halaman dan catatan highlight!', '⚠️');
-                            return;
-                        }
-                        const book = bcBooks.find(book => book.id === b.id);
-                        if (!book) return;
-                        if (!book.highlights) book.highlights = [];
-                        book.highlights.push({ halaman, catatan });
-                        bcSaveData();
-                        bcRenderDetail(book);
-                        bcShowToast('Highlight ditambahkan!', '🔖');
-                    });
-                }
-
-                container.querySelectorAll('.bc-hl-delete').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const idx = parseInt(btn.dataset.idx);
-                        const book = bcBooks.find(book => book.id === b.id);
-                        if (!book) return;
-                        if (book.highlights && book.highlights.length > idx) {
-                            book.highlights.splice(idx, 1);
-                            bcSaveData();
-                            bcRenderDetail(book);
-                            bcShowToast('Highlight dihapus', '🗑️');
-                        }
-                    });
-                });
-
-                const downloadBtn = container.querySelector('#bcDetailDownloadBtn');
-                if (downloadBtn) {
-                    downloadBtn.addEventListener('click', () => bcDownloadPdf(b.id));
-                }
-
-                const editBtn = container.querySelector('#bcDetailEditBtn');
-                if (editBtn) {
-                    editBtn.addEventListener('click', () => {
-                        bcCloseDetail();
-                        setTimeout(() => bcOpenForm(b.id), 300);
-                    });
-                }
-
-                const deleteBtn = container.querySelector('#bcDetailDeleteBtn');
-                if (deleteBtn) {
-                    deleteBtn.addEventListener('click', () => {
-                        if (confirm(`Hapus buku "${b.judul}" secara permanen?`)) {
-                            bcCloseDetail();
-                            setTimeout(() => { bcDeleteBook(b.id); }, 300);
-                        }
-                    });
-                }
-            }
-
-            function bcPopulateCategorySelect() {
-                const sel = document.getElementById('bcFKategori');
-                if (!sel) return;
-                sel.innerHTML = '';
-                bcCategories.forEach(cat => {
-                    const opt = document.createElement('option');
-                    opt.value = cat;
-                    opt.textContent = cat;
-                    sel.appendChild(opt);
-                });
-            }
-
-            function bcOpenForm(bookId = null, presetType = null) {
-                bcPopulateCategorySelect();
-                bcResetCoverUpload();
-                bcResetPdfUpload();
-
-                const typeToggle = document.querySelector('.bc-type-toggle');
-                if (typeToggle) {
-                    typeToggle.querySelectorAll('.bc-toggle-btn').forEach(b => b.classList.remove('active'));
-                }
-
-                let type = presetType || 'fisik';
-                const form = document.getElementById('bcBookForm');
-                const titleEl = document.getElementById('bcModalFormTitle');
-                const iconEl = document.getElementById('bcModalFormIcon');
-                const submitBtn = document.getElementById('bcFormSubmitBtn');
-
-                if (bookId) {
-                    const b = bcBooks.find(book => book.id === bookId);
-                    if (!b) return;
-                    type = b.tipe || 'fisik';
-                    titleEl.textContent = 'Edit Buku';
-                    iconEl.textContent = '✏️';
-                    document.getElementById('bcEditId').value = b.id;
-                    document.getElementById('bcFJudul').value = b.judul;
-                    document.getElementById('bcFPenulis').value = b.penulis;
-                    document.getElementById('bcFGenre').value = b.genre || '';
-                    document.getElementById('bcFKategori').value = b.kategori || '📙 Lainnya';
-                    document.getElementById('bcFHarga').value = b.harga || '';
-                    document.getElementById('bcFStatus').value = b.status || 'sedang';
-                    document.getElementById('bcFRating').value = b.rating || 0;
-                    document.getElementById('bcFRingkasan').value = b.ringkasan || '';
-
-                    const val = b.rating || 0;
-                    document.querySelectorAll('.bc-rating-stars .bc-star').forEach(s => {
-                        const v = parseInt(s.dataset.val);
-                        s.classList.toggle('active', v <= val);
-                        s.textContent = v <= val ? '★' : '☆';
-                    });
-
-                    if (b.tipe === 'digital') {
-                        if (b.pdfData) {
-                            document.getElementById('bcFPdfData').value = b.pdfData;
-                            const pp = document.querySelector('.bc-pdf-preview');
-                            if (pp) { pp.textContent = '📕';
-                                pp.style.color = '#8e6aaa'; }
-                            const pfn = document.querySelector('.bc-pdf-file-name');
-                            if (pfn) pfn.textContent = b.pdfName || 'ebook.pdf';
-                            const pinfo = document.querySelector('.bc-pdf-info');
-                            if (pinfo) pinfo.textContent = `📄 ${b.pdfName || 'ebook.pdf'}`;
-                        }
-                    } else {
-                        if (b.cover && b.cover.startsWith('data:image')) {
-                            document.getElementById('bcFCoverData').value = b.cover;
-                            bcUpdateCoverPreview(b.cover);
-                            const fn = document.querySelector('.bc-cover-file-name');
-                            if (fn) fn.textContent = '📸 cover tersimpan';
-                            const pi = document.querySelector('.bc-preview-initials');
-                            if (pi) pi.textContent = '';
-                        }
-                    }
-                    submitBtn.textContent = '✏️ Update Buku';
-                } else {
-                    titleEl.textContent = 'Tambah Buku';
-                    iconEl.textContent = type === 'digital' ? '📱' : '📖';
-                    document.getElementById('bcEditId').value = '';
-                    document.getElementById('bcFJudul').value = '';
-                    document.getElementById('bcFPenulis').value = '';
-                    document.getElementById('bcFGenre').value = '';
-                    document.getElementById('bcFKategori').value = bcCategories.length ? bcCategories[0] : '📙 Lainnya';
-                    document.getElementById('bcFHarga').value = '';
-                    document.getElementById('bcFStatus').value = 'sedang';
-                    document.getElementById('bcFRating').value = 0;
-                    document.getElementById('bcFRingkasan').value = '';
-                    document.querySelectorAll('.bc-rating-stars .bc-star').forEach(s => {
-                        s.classList.remove('active');
-                        s.textContent = '☆';
-                    });
-                    submitBtn.textContent = type === 'digital' ? '📱 Upload E-Book' : '📚 Simpan Buku';
-                }
-
-                const toggleBtn = document.querySelector(`.bc-type-toggle .bc-toggle-btn[data-type="${type}"]`);
-                if (toggleBtn) {
-                    toggleBtn.classList.add('active');
-                    bcFormType = type;
-                    document.getElementById('bcFTipe').value = type;
-                    bcUpdateFormFields();
-                }
-
-                if (type === 'digital') {
-                    document.querySelector('.bc-field-physical').style.display = 'none';
-                    document.querySelector('.bc-field-digital').style.display = 'block';
-                } else {
-                    document.querySelector('.bc-field-physical').style.display = 'block';
-                    document.querySelector('.bc-field-digital').style.display = 'none';
-                }
-
-                const overlay = document.querySelector('.bc-modal-overlay.bc-form-modal');
-                if (overlay) overlay.classList.add('open');
-            }
-
-            function bcCloseForm() {
-                const overlay = document.querySelector('.bc-modal-overlay.bc-form-modal');
-                if (overlay) overlay.classList.remove('open');
-            }
-
-            function bcUpdateFormFields() {
-                const isDigital = bcFormType === 'digital';
-                document.querySelector('.bc-field-physical').style.display = isDigital ? 'none' : 'block';
-                document.querySelector('.bc-field-digital').style.display = isDigital ? 'block' : 'none';
-            }
-
-            function bcUpdateCoverPreview(dataUrl) {
-                const preview = document.querySelector('.bc-cover-preview');
-                const initials = document.querySelector('.bc-preview-initials');
-                if (!preview) return;
-                if (dataUrl) {
-                    preview.style.backgroundImage = `url('${dataUrl}')`;
-                    preview.style.backgroundSize = 'cover';
-                    preview.style.backgroundPosition = 'center';
-                    if (initials) initials.style.display = 'none';
-                    preview.classList.add('has-image');
-                } else {
-                    preview.style.backgroundImage = '';
-                    if (initials) { initials.style.display = 'block';
-                        initials.textContent = '📕'; }
-                    preview.classList.remove('has-image');
-                }
-            }
-
-            function bcResetCoverUpload() {
-                document.getElementById('bcFCoverData').value = '';
-                document.getElementById('bcFCoverFile').value = '';
-                const fn = document.querySelector('.bc-cover-file-name');
-                if (fn) fn.textContent = '';
-                bcUpdateCoverPreview(null);
-            }
-
-            function bcResetPdfUpload() {
-                document.getElementById('bcFPdfData').value = '';
-                document.getElementById('bcFPdfFile').value = '';
-                const pp = document.querySelector('.bc-pdf-preview');
-                if (pp) { pp.textContent = '📄';
-                    pp.style.color = '#8e6aaa'; }
-                const pfn = document.querySelector('.bc-pdf-file-name');
-                if (pfn) pfn.textContent = '.pdf';
-                const pinfo = document.querySelector('.bc-pdf-info');
-                if (pinfo) pinfo.textContent = 'Belum ada file';
-            }
-
-            // --- Build the HTML ---
-            bcLoadData();
-
-            el.innerHTML = `
-                <div class="book-collection-app" id="bcApp">
-                    <div class="bc-container">
-                        <!-- Toast -->
-                        <div class="bc-toast" id="bcToast">
-                            <span class="bc-toast-icon">✅</span>
-                            <span class="bc-toast-message">Berhasil!</span>
-                        </div>
-
-                        <!-- HEADER -->
-                        <header class="bc-header">
-                            <div class="bc-header-left">
-                                <span class="bc-logo-icon">📖</span>
-                                <div>
-                                    <h1>Book Collection</h1>
-                                    <div class="bc-sub">
-                                        ✦ Simpan jejak setiap bacaan
-                                        <span class="bc-count-badge">${bcBooks.length}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="bc-header-actions">
-                                <button class="bc-btn-primary" id="bcBtnTambahBuku">+ Tambah Buku</button>
-                                <button class="bc-btn-primary bc-btn-digital" id="bcBtnUploadEBook">📱 Upload E-Book</button>
-                            </div>
-                        </header>
-
-                        <!-- SEARCH -->
-                        <div class="bc-search-section">
-                            <div class="bc-search-wrapper">
-                                <span class="bc-search-icon">🔍</span>
-                                <input type="text" id="bcSearchInput" placeholder="Cari judul atau penulis..." />
-                                <button class="bc-clear-search" id="bcClearSearch">✕</button>
-                            </div>
-                        </div>
-
-                        <!-- CATEGORY -->
-                        <div class="bc-category-section">
-                            <div class="bc-category-scroll" id="bcCategoryTabs"></div>
-                        </div>
-
-                        <!-- FILTER -->
-                        <div class="bc-filter-bar" id="bcFilterBar">
-                            <button class="bc-filter-btn active" data-filter="semua"><span class="bc-f-icon">📚</span> Semua</button>
-                            <button class="bc-filter-btn" data-filter="favorit"><span class="bc-f-icon">⭐</span> Favorit</button>
-                            <button class="bc-filter-btn" data-filter="digital"><span class="bc-f-icon">📱</span> Digital</button>
-                            <button class="bc-filter-btn" data-filter="selesai"><span class="bc-f-icon">✅</span> Selesai</button>
-                            <button class="bc-filter-btn" data-filter="sedang"><span class="bc-f-icon">📖</span> Sedang</button>
-                            <button class="bc-filter-btn" data-filter="ingin"><span class="bc-f-icon">📌</span> Ingin</button>
-                        </div>
-
-                        <!-- GRID -->
-                        <div class="bc-book-grid" id="bcBookGrid"></div>
-                    </div>
-
-                    <!-- FORM MODAL -->
-                    <div class="bc-modal-overlay bc-form-modal">
-                        <div class="bc-modal">
-                            <button class="bc-modal-close" id="bcModalFormClose">&times;</button>
-                            <h2>
-                                <span class="bc-modal-icon" id="bcModalFormIcon">📖</span>
-                                <span id="bcModalFormTitle">Tambah Buku</span>
-                            </h2>
-                            <form id="bcBookForm">
-                                <input type="hidden" id="bcEditId" />
-
-                                <div class="bc-form-group">
-                                    <label><span class="bc-label-icon">📂</span> Tipe Buku</label>
-                                    <div class="bc-type-toggle" id="bcTypeToggle">
-                                        <button type="button" class="bc-toggle-btn active" data-type="fisik">
-                                            <span class="bc-toggle-icon">📕</span> Fisik
-                                        </button>
-                                        <button type="button" class="bc-toggle-btn" data-type="digital">
-                                            <span class="bc-toggle-icon">📱</span> Digital
-                                        </button>
-                                    </div>
-                                    <input type="hidden" id="bcFTipe" value="fisik" />
-                                </div>
-
-                                <div class="bc-form-group">
-                                    <label><span class="bc-label-icon">📕</span> Judul Buku</label>
-                                    <input type="text" id="bcFJudul" placeholder="Misal: Laskar Pelangi" required />
-                                </div>
-                                <div class="bc-form-group">
-                                    <label><span class="bc-label-icon">✍️</span> Penulis</label>
-                                    <input type="text" id="bcFPenulis" placeholder="Andrea Hirata" required />
-                                </div>
-                                <div class="bc-form-row">
-                                    <div class="bc-form-group">
-                                        <label><span class="bc-label-icon">🏷️</span> Genre</label>
-                                        <input type="text" id="bcFGenre" placeholder="Fiksi, Sains, dll" />
-                                    </div>
-                                    <div class="bc-form-group">
-                                        <label><span class="bc-label-icon">📂</span> Kategori / Folder</label>
-                                        <div class="bc-cat-input-group">
-                                            <select id="bcFKategori"></select>
-                                            <button type="button" id="bcBtnAddCategory">+ Buat</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- FISIK -->
-                                <div class="bc-field-physical">
-                                    <div class="bc-form-row">
-                                        <div class="bc-form-group">
-                                            <label><span class="bc-label-icon">💰</span> Harga Buku</label>
-                                            <input type="text" id="bcFHarga" placeholder="Rp 75.000" />
-                                        </div>
-                                        <div class="bc-form-group">
-                                            <label><span class="bc-label-icon">📌</span> Status</label>
-                                            <select id="bcFStatus">
-                                                <option value="sedang">📖 Sedang Dibaca</option>
-                                                <option value="selesai">✅ Selesai</option>
-                                                <option value="ingin">📌 Ingin Dibaca</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="bc-form-group">
-                                        <label><span class="bc-label-icon">🖼️</span> Cover Buku</label>
-                                        <div class="bc-cover-upload-wrapper">
-                                            <div class="bc-cover-preview" id="bcCoverPreview">
-                                                <span class="bc-preview-initials">📕</span>
-                                            </div>
-                                            <div class="bc-file-input-wrap">
-                                                <div class="bc-file-label">
-                                                    <span class="bc-file-icon">📤</span>
-                                                    <span>Pilih gambar cover</span>
-                                                    <span class="bc-cover-file-name"></span>
-                                                </div>
-                                                <input type="file" id="bcFCoverFile" accept="image/*" />
-                                            </div>
-                                            <button type="button" class="bc-btn-remove-cover" id="bcBtnRemoveCover">✕</button>
-                                        </div>
-                                        <input type="hidden" id="bcFCoverData" value="" />
-                                    </div>
-                                </div>
-
-                                <!-- DIGITAL -->
-                                <div class="bc-field-digital">
-                                    <div class="bc-form-group">
-                                        <label><span class="bc-label-icon">📄</span> Upload File E-Book (PDF)</label>
-                                        <div class="bc-pdf-upload-wrapper">
-                                            <div class="bc-pdf-preview">📄</div>
-                                            <div class="bc-file-input-wrap">
-                                                <div class="bc-file-label">
-                                                    <span class="bc-file-icon">📤</span>
-                                                    <span>Pilih file PDF</span>
-                                                    <span class="bc-pdf-file-name">.pdf</span>
-                                                </div>
-                                                <input type="file" id="bcFPdfFile" accept=".pdf,application/pdf" />
-                                            </div>
-                                            <button type="button" class="bc-btn-remove-pdf" id="bcBtnRemovePdf">✕</button>
-                                        </div>
-                                        <input type="hidden" id="bcFPdfData" value="" />
-                                        <div class="bc-pdf-info">Belum ada file</div>
-                                    </div>
-                                </div>
-
-                                <div class="bc-form-group">
-                                    <label><span class="bc-label-icon">⭐</span> Rating (klik bintang)</label>
-                                    <div class="bc-rating-stars" id="bcRatingStars">
-                                        <span class="bc-star" data-val="1">☆</span>
-                                        <span class="bc-star" data-val="2">☆</span>
-                                        <span class="bc-star" data-val="3">☆</span>
-                                        <span class="bc-star" data-val="4">☆</span>
-                                        <span class="bc-star" data-val="5">☆</span>
-                                    </div>
-                                    <input type="hidden" id="bcFRating" value="0" />
-                                </div>
-                                <div class="bc-form-group">
-                                    <label><span class="bc-label-icon">📝</span> Ringkasan / Tanggapan</label>
-                                    <textarea id="bcFRingkasan" placeholder="Tulis ringkasan atau kesanmu setelah membaca..."></textarea>
-                                </div>
-
-                                <button type="submit" class="bc-btn-primary" id="bcFormSubmitBtn">Simpan Buku</button>
-                            </form>
-                        </div>
-                    </div>
-
-                    <!-- DETAIL MODAL -->
-                    <div class="bc-modal-overlay bc-detail-modal">
-                        <div class="bc-modal">
-                            <button class="bc-modal-close" id="bcModalDetailClose">&times;</button>
-                            <div class="bc-detail-content"></div>
-                        </div>
-                    </div>
-                </div>
-            `;
-
-            // --- Bind events ---
-            const searchInput = document.getElementById('bcSearchInput');
-            const clearSearch = document.getElementById('bcClearSearch');
-            if (searchInput) {
-                searchInput.addEventListener('input', function() {
-                    bcSearchQuery = this.value.trim().toLowerCase();
-                    if (clearSearch) clearSearch.classList.toggle('visible', bcSearchQuery.length > 0);
-                    bcRender();
-                });
-            }
-            if (clearSearch) {
-                clearSearch.addEventListener('click', function() {
-                    if (searchInput) searchInput.value = '';
-                    bcSearchQuery = '';
-                    clearSearch.classList.remove('visible');
-                    bcRender();
-                    if (searchInput) searchInput.focus();
-                });
-            }
-
-            const filterBar = document.getElementById('bcFilterBar');
-            if (filterBar) {
-                filterBar.addEventListener('click', (e) => {
-                    const btn = e.target.closest('.bc-filter-btn');
-                    if (!btn) return;
-                    if (bcCurrentFilter === btn.dataset.filter) {
-                        bcCurrentFilter = 'semua';
-                    } else {
-                        bcCurrentFilter = btn.dataset.filter;
-                    }
-                    bcRender();
-                });
-            }
-
-            const btnTambah = document.getElementById('bcBtnTambahBuku');
-            if (btnTambah) btnTambah.addEventListener('click', () => bcOpenForm(null, 'fisik'));
-
-            const btnUpload = document.getElementById('bcBtnUploadEBook');
-            if (btnUpload) btnUpload.addEventListener('click', () => bcOpenForm(null, 'digital'));
-
-            const formClose = document.getElementById('bcModalFormClose');
-            if (formClose) formClose.addEventListener('click', bcCloseForm);
-            const formOverlay = document.querySelector('.bc-modal-overlay.bc-form-modal');
-            if (formOverlay) {
-                formOverlay.addEventListener('click', (e) => {
-                    if (e.target === formOverlay) bcCloseForm();
-                });
-            }
-
-            const detailClose = document.getElementById('bcModalDetailClose');
-            if (detailClose) detailClose.addEventListener('click', bcCloseDetail);
-            const detailOverlay = document.querySelector('.bc-modal-overlay.bc-detail-modal');
-            if (detailOverlay) {
-                detailOverlay.addEventListener('click', (e) => {
-                    if (e.target === detailOverlay) bcCloseDetail();
-                });
-            }
-
-            const typeToggle = document.getElementById('bcTypeToggle');
-            if (typeToggle) {
-                typeToggle.querySelectorAll('.bc-toggle-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        typeToggle.querySelectorAll('.bc-toggle-btn').forEach(b => b.classList.remove(
-                            'active'));
-                        this.classList.add('active');
-                        bcFormType = this.dataset.type;
-                        document.getElementById('bcFTipe').value = bcFormType;
-                        bcUpdateFormFields();
-                        if (bcFormType === 'fisik') {
-                            bcResetPdfUpload();
-                        } else {
-                            bcResetCoverUpload();
-                        }
-                    });
-                });
-            }
-
-            const ratingStars = document.getElementById('bcRatingStars');
-            if (ratingStars) {
-                ratingStars.querySelectorAll('.bc-star').forEach(star => {
-                    star.addEventListener('click', () => {
-                        const val = parseInt(star.dataset.val);
-                        document.getElementById('bcFRating').value = val;
-                        ratingStars.querySelectorAll('.bc-star').forEach(s => {
-                            const sv = parseInt(s.dataset.val);
-                            s.classList.toggle('active', sv <= val);
-                            s.textContent = sv <= val ? '★' : '☆';
-                        });
-                    });
-                });
-            }
-
-            const coverFile = document.getElementById('bcFCoverFile');
-            if (coverFile) {
-                coverFile.addEventListener('change', function() {
-                    if (this.files && this.files.length > 0) {
-                        const file = this.files[0];
-                        if (!file.type.startsWith('image/')) {
-                            bcShowToast('File harus berupa gambar!', '⚠️');
-                            return;
-                        }
-                        const reader = new FileReader();
-                        reader.onload = function(e) {
-                            const dataUrl = e.target.result;
-                            document.getElementById('bcFCoverData').value = dataUrl;
-                            bcUpdateCoverPreview(dataUrl);
-                            const fn = document.querySelector('.bc-cover-file-name');
-                            if (fn) fn.textContent = file.name;
-                            bcShowToast('Cover berhasil diupload!', '🖼️');
-                        };
-                        reader.readAsDataURL(file);
-                    }
-                });
-            }
-            const removeCover = document.getElementById('bcBtnRemoveCover');
-            if (removeCover) {
-                removeCover.addEventListener('click', function() {
-                    bcResetCoverUpload();
-                    document.getElementById('bcFCoverFile').value = '';
-                    bcShowToast('Cover dihapus', '🗑️');
-                });
-            }
-
-            const pdfFile = document.getElementById('bcFPdfFile');
-            if (pdfFile) {
-                pdfFile.addEventListener('change', function() {
-                    if (this.files && this.files.length > 0) {
-                        const file = this.files[0];
-                        if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
-                            bcShowToast('File harus berupa PDF!', '⚠️');
-                            return;
-                        }
-                        if (file.size > 10 * 1024 * 1024) {
-                            bcShowToast('Ukuran file maksimal 10MB!', '⚠️');
-                            return;
-                        }
-                        const reader = new FileReader();
-                        reader.onload = function(e) {
-                            const dataUrl = e.target.result;
-                            document.getElementById('bcFPdfData').value = dataUrl;
-                            const pp = document.querySelector('.bc-pdf-preview');
-                            if (pp) { pp.textContent = '📕';
-                                pp.style.color = '#8e6aaa'; }
-                            const pfn = document.querySelector('.bc-pdf-file-name');
-                            if (pfn) pfn.textContent = file.name;
-                            const pinfo = document.querySelector('.bc-pdf-info');
-                            if (pinfo) pinfo.textContent = `📄 ${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
-                            bcShowToast('E-Book berhasil diupload!', '📱');
-                        };
-                        reader.readAsDataURL(file);
-                    }
-                });
-            }
-            const removePdf = document.getElementById('bcBtnRemovePdf');
-            if (removePdf) {
-                removePdf.addEventListener('click', function() {
-                    bcResetPdfUpload();
-                    document.getElementById('bcFPdfFile').value = '';
-                    bcShowToast('File PDF dihapus', '🗑️');
-                });
-            }
-
-            const btnAddCat = document.getElementById('bcBtnAddCategory');
-            if (btnAddCat) {
-                btnAddCat.addEventListener('click', () => {
-                    const name = prompt('Nama folder baru:');
-                    if (name && name.trim()) {
-                        const trimmed = name.trim();
-                        if (bcCategories.includes(trimmed)) {
-                            bcShowToast(`Folder "${trimmed}" sudah ada`, '⚠️');
-                            return;
-                        }
-                        bcCategories.push(trimmed);
-                        bcSaveCategories();
-                        bcPopulateCategorySelect();
-                        document.getElementById('bcFKategori').value = trimmed;
-                        bcShowToast(`Folder "${trimmed}" dibuat`, '📂');
-                    }
-                });
-            }
-
-            const form = document.getElementById('bcBookForm');
-            if (form) {
-                form.addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    const isDigital = bcFormType === 'digital';
-                    const data = {
-                        judul: document.getElementById('bcFJudul').value,
-                        penulis: document.getElementById('bcFPenulis').value,
-                        genre: document.getElementById('bcFGenre').value,
-                        kategori: document.getElementById('bcFKategori').value,
-                        harga: document.getElementById('bcFHarga').value,
-                        status: document.getElementById('bcFStatus').value,
-                        rating: document.getElementById('bcFRating').value,
-                        ringkasan: document.getElementById('bcFRingkasan').value,
-                        tipe: isDigital ? 'digital' : 'fisik',
-                        coverData: document.getElementById('bcFCoverData').value,
-                        pdfData: document.getElementById('bcFPdfData').value,
-                        pdfName: isDigital ? (document.querySelector('.bc-pdf-file-name')?.textContent ||
-                            'ebook.pdf') : '',
-                    };
-                    if (!data.judul.trim() || !data.penulis.trim()) {
-                        bcShowToast('Judul dan Penulis wajib diisi!', '⚠️');
-                        return;
-                    }
-                    if (isDigital && !data.pdfData) {
-                        bcShowToast('Upload file PDF untuk E-Book!', '⚠️');
-                        return;
-                    }
-                    if (data.kategori && !bcCategories.includes(data.kategori)) {
-                        bcCategories.push(data.kategori);
-                        bcSaveCategories();
-                    }
-                    const submitBtn = document.getElementById('bcFormSubmitBtn');
-                    submitBtn.disabled = true;
-                    submitBtn.textContent = '⏳ Menyimpan...';
-                    const id = document.getElementById('bcEditId').value;
-                    if (id) {
-                        await bcUpdateBook(parseInt(id), data);
-                    } else {
-                        await bcAddBook(data);
-                    }
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = id ? '✏️ Update Buku' : (isDigital ? '📱 Upload E-Book' : '📚 Simpan Buku');
-                    bcCloseForm();
-                });
-            }
-
-            bcRender();
-
-            window.bcOpenForm = bcOpenForm;
-            window.bcCloseForm = bcCloseForm;
-            window.bcOpenDetail = bcOpenDetail;
-            window.bcCloseDetail = bcCloseDetail;
-            window.bcRender = bcRender;
-            window.bcShowToast = bcShowToast;
-        }
-
-        // ============================================
         // BACKUP & RESTORE SEMUA DATA
         // ============================================
         function backupData() {
@@ -8689,9 +5662,8 @@
                 eng_alphabet: localStorage.getItem('eng_alphabet'),
                 eng_daily: localStorage.getItem('eng_daily'),
                 eng_vocab: localStorage.getItem('eng_vocab'),
-                pedoman_hidup_data: localStorage.getItem('pedoman_hidup_data'),
-                bookCollection: localStorage.getItem('bookCollection'),
-                bookCategories: localStorage.getItem('bookCategories'),
+                pedoman_folders: localStorage.getItem('pedoman_folders'),
+                pedoman_contents: localStorage.getItem('pedoman_contents'),
                 timestamp: new Date().toISOString()
             };
             const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
@@ -8716,9 +5688,8 @@
                     if (data.eng_alphabet) { localStorage.setItem('eng_alphabet', data.eng_alphabet); count++; }
                     if (data.eng_daily) { localStorage.setItem('eng_daily', data.eng_daily); count++; }
                     if (data.eng_vocab) { localStorage.setItem('eng_vocab', data.eng_vocab); count++; }
-                    if (data.pedoman_hidup_data) { localStorage.setItem('pedoman_hidup_data', data.pedoman_hidup_data); count++; }
-                    if (data.bookCollection) { localStorage.setItem('bookCollection', data.bookCollection); count++; }
-                    if (data.bookCategories) { localStorage.setItem('bookCategories', data.bookCategories); count++; }
+                    if (data.pedoman_folders) { localStorage.setItem('pedoman_folders', data.pedoman_folders); count++; }
+                    if (data.pedoman_contents) { localStorage.setItem('pedoman_contents', data.pedoman_contents); count++; }
                     alert(`✅ Restore berhasil! ${count} data dimuat. Halaman akan refresh.`);
                     location.reload();
                 } catch(err) {
@@ -8746,8 +5717,7 @@
         // ============================================
         window.addEventListener('load', function() {
             const lastApp = localStorage.getItem('lastApp');
-            if (lastApp && ['materi', 'english', 'pedoman', 'bookcollection'].includes(lastApp)) {
-                // beri jeda agar DOM siap
+            if (lastApp && ['materi', 'english', 'pedoman'].includes(lastApp)) {
                 setTimeout(() => {
                     openApp(lastApp);
                 }, 300);
