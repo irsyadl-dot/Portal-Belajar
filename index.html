@@ -356,7 +356,7 @@
             }
         }
 
-        /* ===== MATERI APP STYLES (tetap sama) ===== */
+        /* ===== MATERI APP STYLES ===== */
         .materi-app-wrapper {
             max-width: 1200px;
             margin: 0 auto;
@@ -3465,12 +3465,13 @@
         }
 
         // ============================================
-        // MATERI APP — DENGAN LOCALSTORAGE
+        // MATERI APP — DENGAN LOCALSTORAGE (PERSIS KODE ASLI)
         // ============================================
         let folders = [];
         let contents = {};
         let currentFolderId = null;
 
+        // ===== SAVE/LOAD MATERI =====
         function saveMateriData() {
             localStorage.setItem('materi_folders', JSON.stringify(folders));
             localStorage.setItem('materi_contents', JSON.stringify(contents));
@@ -3919,7 +3920,7 @@
         }
 
         // ============================================
-        // ENGLISH APP — DENGAN LOCALSTORAGE
+        // ENGLISH APP — DENGAN LOCALSTORAGE (PERSIS KODE ASLI)
         // ============================================
         let engAlphabetData = [
             { huruf: 'A', pronounce: 'eɪ', link: 'https://en.wikipedia.org/wiki/A', image: '', note: '', fav: false },
@@ -3972,6 +3973,7 @@
         let engModalCallback = null;
         let engCurrentTab = 'dashboard';
 
+        // ===== SAVE/LOAD ENGLISH =====
         function engSaveData() {
             localStorage.setItem('eng_alphabet', JSON.stringify(engAlphabetData));
             localStorage.setItem('eng_daily', JSON.stringify(engDailyData));
@@ -4588,7 +4590,8 @@
         }
 
         // ============================================
-        // PEDOMAN HIDUP APP — DENGAN STRUKTUR BARU (seperti Materi)
+        // PEDOMAN HIDUP APP — STORAGE SEPERTI MATERI
+        // DILENGKAPI MIGRASI DATA LAMA
         // ============================================
         let pedomanFolders = [];
         let pedomanContents = {};
@@ -4596,6 +4599,7 @@
         let pedomanActiveTab = 'tab-surah';
         let pedomanSearchQuery = '';
 
+        // ===== SAVE/LOAD PEDOMAN (sama seperti Materi) =====
         function savePedomanData() {
             localStorage.setItem('pedoman_folders', JSON.stringify(pedomanFolders));
             localStorage.setItem('pedoman_contents', JSON.stringify(pedomanContents));
@@ -4605,54 +4609,137 @@
             const f = localStorage.getItem('pedoman_folders');
             const c = localStorage.getItem('pedoman_contents');
             if (f && c) {
-                pedomanFolders = JSON.parse(f);
-                pedomanContents = JSON.parse(c);
-                return true;
+                try {
+                    pedomanFolders = JSON.parse(f);
+                    pedomanContents = JSON.parse(c);
+                    return true;
+                } catch (_) { return false; }
             }
             return false;
         }
 
-        function initPedomanData() {
-            if (!loadPedomanData() || pedomanFolders.length === 0) {
-                const id = generatePedomanId();
-                pedomanFolders = [{
-                    id,
-                    name: 'Al-Fatihah',
-                    gradient: 'linear-gradient(135deg, #6C3CE1, #8B5CF6)',
-                    icon: 'fa-quran'
-                }];
-                pedomanContents = {};
-                pedomanContents[id] = [
-                    { id: generatePedomanId(), type: 'surah', image: null,
-                        caption: 'بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ\nالْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ\nالرَّحْمَـٰنِ الرَّحِيمِ\nمَالِكِ يَوْمِ الدِّينِ\nإِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ\nاهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ\nصِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ' },
-                    { id: generatePedomanId(), type: 'asbab',
-                        content: 'Surat Al-Fatihah diturunkan di Mekkah. Menurut sebagian ulama, surat ini diturunkan setelah surat Al-Muddassir. Surat ini disebut juga Ummul Quran (Induk Al-Quran) karena menjadi pembuka dan inti dari seluruh isi Al-Quran.' },
-                    { id: generatePedomanId(), type: 'makna',
-                        content: 'Surat Al-Fatihah mengandung 7 ayat yang merupakan rangkuman dari seluruh ajaran Islam. Kandungan utamanya adalah pujian kepada Allah, pengakuan bahwa hanya Allah yang berhak disembah, permohonan petunjuk ke jalan yang lurus, serta doa agar terhindar dari kesesatan.' }
-                ];
-                savePedomanData();
-            }
-            // Pastikan setiap folder punya content array
-            for (const folder of pedomanFolders) {
-                if (!pedomanContents[folder.id] || !Array.isArray(pedomanContents[folder.id])) {
-                    pedomanContents[folder.id] = [];
+        // ===== MIGRASI DATA LAMA (dari pedoman_hidup_data) =====
+        function migratePedomanOldData() {
+            const oldRaw = localStorage.getItem('pedoman_hidup_data');
+            if (!oldRaw) return false;
+            try {
+                const oldData = JSON.parse(oldRaw);
+                if (!oldData.folders || typeof oldData.folders !== 'object') return false;
+
+                const oldFolders = oldData.folders;
+                const newFolders = [];
+                const newContents = {};
+
+                for (const id in oldFolders) {
+                    const f = oldFolders[id];
+                    if (!f || typeof f !== 'object') continue;
+                    const newId = 'pf' + Date.now() + '_' + Math.random().toString(36).slice(2, 6);
+                    newFolders.push({
+                        id: newId,
+                        name: f.name || 'Folder',
+                        tags: f.tags || [],
+                        favorite: f.favorite || false,
+                        gradient: f._gradient || getPedomanGradient(),
+                        icon: f._icon || getPedomanIcon()
+                    });
+                    newContents[newId] = [];
+
+                    // Surah items
+                    if (f.surah && Array.isArray(f.surah.items)) {
+                        for (const item of f.surah.items) {
+                            newContents[newId].push({
+                                id: 'pc' + Date.now() + '_' + Math.random().toString(36).slice(2, 5),
+                                type: 'surah',
+                                name: item.name || 'Surah',
+                                dataUrl: item.image || '',
+                                content: item.caption || ''
+                            });
+                        }
+                    }
+                    // Asbab
+                    if (f.asbab && typeof f.asbab.content === 'string') {
+                        newContents[newId].push({
+                            id: 'pc' + Date.now() + '_' + Math.random().toString(36).slice(2, 5),
+                            type: 'asbab',
+                            name: 'Asbabun Nuzul',
+                            dataUrl: '',
+                            content: f.asbab.content
+                        });
+                    }
+                    // Makna
+                    if (f.makna && typeof f.makna.content === 'string') {
+                        newContents[newId].push({
+                            id: 'pc' + Date.now() + '_' + Math.random().toString(36).slice(2, 5),
+                            type: 'makna',
+                            name: 'Makna Surah',
+                            dataUrl: '',
+                            content: f.makna.content
+                        });
+                    }
                 }
-                // Pastikan ada minimal satu item untuk tiap tipe jika kosong
-                const types = pedomanContents[folder.id].map(i => i.type);
-                if (!types.includes('surah')) pedomanContents[folder.id].push({ id: generatePedomanId(),
-                    type: 'surah', image: null, caption: '' });
-                if (!types.includes('asbab')) pedomanContents[folder.id].push({ id: generatePedomanId(),
-                    type: 'asbab', content: '' });
-                if (!types.includes('makna')) pedomanContents[folder.id].push({ id: generatePedomanId(),
-                    type: 'makna', content: '' });
+
+                if (newFolders.length > 0) {
+                    pedomanFolders = newFolders;
+                    pedomanContents = newContents;
+                    savePedomanData();
+                    // Hapus data lama agar tidak dipakai lagi
+                    localStorage.removeItem('pedoman_hidup_data');
+                    return true;
+                }
+                return false;
+            } catch (_) { return false; }
+        }
+
+        function initPedomanData() {
+            // Coba muat data baru
+            if (loadPedomanData()) {
+                // Pastikan semua folder punya properti
+                for (const f of pedomanFolders) {
+                    if (!f.gradient) f.gradient = getPedomanGradient();
+                    if (!f.icon) f.icon = getPedomanIcon();
+                    if (!f.tags) f.tags = [];
+                    if (!pedomanContents[f.id]) pedomanContents[f.id] = [];
+                }
+                savePedomanData();
+                return;
             }
+
+            // Jika tidak ada data baru, coba migrasi dari lama
+            if (migratePedomanOldData()) {
+                // Setelah migrasi, pastikan properti lengkap
+                for (const f of pedomanFolders) {
+                    if (!f.gradient) f.gradient = getPedomanGradient();
+                    if (!f.icon) f.icon = getPedomanIcon();
+                    if (!f.tags) f.tags = [];
+                    if (!pedomanContents[f.id]) pedomanContents[f.id] = [];
+                }
+                savePedomanData();
+                return;
+            }
+
+            // Jika benar-benar kosong, buat default
+            const id = 'pf' + Date.now();
+            pedomanFolders = [{
+                id: id,
+                name: 'Al-Fatihah',
+                tags: ['Pembuka', 'Ummul Quran'],
+                favorite: false,
+                gradient: 'linear-gradient(135deg, #6C3CE1, #8B5CF6)',
+                icon: 'fa-quran'
+            }];
+            pedomanContents = {};
+            pedomanContents[id] = [
+                { id: 'pc' + Date.now() + 'a', type: 'surah', name: 'Gambar Surah', dataUrl: '',
+                    content: 'بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ\nالْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ\nالرَّحْمَـٰنِ الرَّحِيمِ\nمَالِكِ يَوْمِ الدِّينِ\nإِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ\nاهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ\nصِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ' },
+                { id: 'pc' + Date.now() + 'b', type: 'asbab', name: 'Asbabun Nuzul',
+                    content: 'Surat Al-Fatihah diturunkan di Mekkah. Menurut sebagian ulama, surat ini diturunkan setelah surat Al-Muddassir. Surat ini disebut juga Ummul Quran (Induk Al-Quran) karena menjadi pembuka dan inti dari seluruh isi Al-Quran.' },
+                { id: 'pc' + Date.now() + 'c', type: 'makna', name: 'Makna Surah',
+                    content: 'Surat Al-Fatihah mengandung 7 ayat yang merupakan rangkuman dari seluruh ajaran Islam. Kandungan utamanya adalah pujian kepada Allah, pengakuan bahwa hanya Allah yang berhak disembah, permohonan petunjuk ke jalan yang lurus, serta doa agar terhindar dari kesesatan.' }
+            ];
             savePedomanData();
         }
 
-        function generatePedomanId() {
-            return Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 8);
-        }
-
+        // ===== FUNGSI GET GRADIENT & ICON =====
         function getPedomanGradient() {
             const palettes = [
                 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
@@ -4679,6 +4766,10 @@
             return icons[Math.floor(Math.random() * icons.length)];
         }
 
+        function generatePedomanId() {
+            return 'pf' + Date.now() + '_' + Math.random().toString(36).slice(2, 6);
+        }
+
         function escapeHtml(text) {
             if (!text) return '';
             const div = document.createElement('div');
@@ -4696,12 +4787,23 @@
             setTimeout(() => { if (el.parentNode) el.remove(); }, 3200);
         }
 
+        // ===== RENDER PEDOMAN APP =====
         function loadPedoman(el) {
-            initPedomanData();
+            initPedomanData(); // <-- ini yang menangani migrasi
             renderPedomanApp(el);
         }
 
         function renderPedomanApp(el) {
+            // pastikan data valid
+            loadPedomanData();
+            for (const f of pedomanFolders) {
+                if (!f.gradient) f.gradient = getPedomanGradient();
+                if (!f.icon) f.icon = getPedomanIcon();
+                if (!f.tags) f.tags = [];
+                if (!pedomanContents[f.id]) pedomanContents[f.id] = [];
+            }
+            savePedomanData();
+
             el.innerHTML = `
                 <div class="pedoman-app">
                     <!-- Galaxy Background -->
@@ -4863,6 +4965,9 @@
             createPedomanStars();
         }
 
+        // ============================================
+        // EVENT LISTENER PEDOMAN (sama seperti sebelumnya)
+        // ============================================
         function initPedomanEvents() {
             const modalOverlay = document.getElementById('pedoman-modal-overlay');
             const modalInput = document.getElementById('pedoman-modal-input');
@@ -4874,13 +4979,15 @@
                     name) => {
                     if (name.trim()) {
                         const id = generatePedomanId();
-                        pedomanFolders.push({ id, name: name.trim(), gradient: getPedomanGradient(),
-                            icon: getPedomanIcon() });
-                        pedomanContents[id] = [
-                            { id: generatePedomanId(), type: 'surah', image: null, caption: '' },
-                            { id: generatePedomanId(), type: 'asbab', content: '' },
-                            { id: generatePedomanId(), type: 'makna', content: '' }
-                        ];
+                        pedomanFolders.push({
+                            id,
+                            name: name.trim(),
+                            tags: [],
+                            favorite: false,
+                            gradient: getPedomanGradient(),
+                            icon: getPedomanIcon()
+                        });
+                        pedomanContents[id] = [];
                         savePedomanData();
                         renderPedomanFolders();
                         showPedomanToast(`Folder "${name.trim()}" berhasil dibuat`, 'fa-folder-plus', '#6C3CE1');
@@ -5007,6 +5114,9 @@
             });
         }
 
+        // ============================================
+        // FUNGSI RENDER FOLDER, DETAIL, GALERI, DLL
+        // ============================================
         function renderPedomanFolders() {
             const grid = document.getElementById('pedoman-folder-grid');
             const count = document.getElementById('pedoman-folder-count');
@@ -5032,17 +5142,16 @@
             let html = '';
             for (const f of filtered) {
                 const items = pedomanContents[f.id] || [];
-                const hasContent = items.some(i => {
-                    if (i.type === 'surah') return i.image || (i.caption && i.caption.trim());
-                    if (i.type === 'asbab' || i.type === 'makna') return i.content && i.content.trim();
-                    return false;
-                });
-                const noteCount = hasContent ? 1 : 0;
+                const hasSurah = items.some(item => item.type === 'surah' && (item.dataUrl || (item.content && item
+                    .content.trim())));
+                const hasAsbab = items.some(item => item.type === 'asbab' && item.content && item.content.trim());
+                const hasMakna = items.some(item => item.type === 'makna' && item.content && item.content.trim());
+                const noteCount = (hasSurah ? 1 : 0) + (hasAsbab ? 1 : 0) + (hasMakna ? 1 : 0);
 
                 html += `
                         <div class="folder-card" data-id="${f.id}" style="background: ${f.gradient || getPedomanGradient()};">
                             <button class="delete-folder-btn" data-id="${f.id}" title="Hapus folder"><i class="fas fa-times"></i></button>
-                            <div class="folder-icon"><i class="fas ${f.icon || getPedomanIcon()}"></i></div>
+                            <div class="folder-icon"><i class="fas ${f.icon || 'fa-folder'}"></i></div>
                             <div class="folder-name">${escapeHtml(f.name)}</div>
                             <div class="folder-meta"><i class="fas fa-book" style="margin-right:4px;"></i> ${noteCount > 0 ? `${noteCount} catatan` : 'Kosong'}</div>
                         </div>
@@ -5093,12 +5202,13 @@
             renderPedomanSurahGallery(folderId);
 
             const items = pedomanContents[folderId] || [];
-            const asbabItem = items.find(i => i.type === 'asbab');
-            const maknaItem = items.find(i => i.type === 'makna');
+            const asbabItem = items.find(item => item.type === 'asbab');
+            const maknaItem = items.find(item => item.type === 'makna');
+
             const asbabEditor = document.getElementById('pedoman-asbab-editor');
             const maknaEditor = document.getElementById('pedoman-makna-editor');
-            asbabEditor.innerHTML = asbabItem ? asbabItem.content || '' : '';
-            maknaEditor.innerHTML = maknaItem ? maknaItem.content || '' : '';
+            asbabEditor.innerHTML = asbabItem ? (asbabItem.content || '') : '';
+            maknaEditor.innerHTML = maknaItem ? (maknaItem.content || '') : '';
 
             updatePedomanGlobalSaveIndicator(true);
             activatePedomanTab(pedomanActiveTab);
@@ -5109,28 +5219,27 @@
         }
 
         function renderPedomanSurahGallery(folderId) {
-            const items = pedomanContents[folderId] || [];
-            const surahItems = items.filter(i => i.type === 'surah');
             const container = document.getElementById('pedoman-surah-gallery');
             if (!container) return;
+            const items = (pedomanContents[folderId] || []).filter(item => item.type === 'surah');
 
-            if (surahItems.length === 0) {
+            if (items.length === 0) {
                 container.innerHTML =
                     `<div class="surah-empty"><i class="fas fa-image"></i><p>Belum ada gambar. Upload gambar untuk mulai mencatat.</p></div>`;
                 return;
             }
 
             let html = '';
-            for (let i = 0; i < surahItems.length; i++) {
-                const item = surahItems[i];
-                const imgHtml = item.image ?
-                    `<div class="surah-img-wrap"><img src="${escapeHtml(item.image)}" alt="Gambar surah" loading="lazy" /><div class="resize-hint"><i class="fas fa-expand"></i> seret sudut</div></div>` :
+            for (let i = 0; i < items.length; i++) {
+                const item = items[i];
+                const imgHtml = item.dataUrl ?
+                    `<div class="surah-img-wrap"><img src="${escapeHtml(item.dataUrl)}" alt="Gambar surah" loading="lazy" /><div class="resize-hint"><i class="fas fa-expand"></i> seret sudut</div></div>` :
                     `<div style="background:rgba(255,255,255,0.04);border-radius:12px;padding:24px;text-align:center;color:rgba(255,255,255,0.2);margin-bottom:12px;"><i class="fas fa-image" style="font-size:2rem;"></i><p style="font-size:0.8rem;margin-top:4px;">Tidak ada gambar</p></div>`;
                 html += `
                         <div class="surah-item" data-index="${i}">
                             <button class="delete-surah-btn" data-index="${i}" title="Hapus"><i class="fas fa-times"></i></button>
                             ${imgHtml}
-                            <textarea class="caption-area" data-index="${i}" placeholder="Tulis catatan untuk gambar ini…" spellcheck="false">${escapeHtml(item.caption || '')}</textarea>
+                            <textarea class="caption-area" data-index="${i}" placeholder="Tulis catatan untuk gambar ini…" spellcheck="false">${escapeHtml(item.content || '')}</textarea>
                         </div>
                     `;
             }
@@ -5167,9 +5276,9 @@
             clearTimeout(pedomanCaptionTimeout);
             pedomanCaptionTimeout = setTimeout(() => {
                 const items = pedomanContents[folderId] || [];
-                const surahItems = items.filter(i => i.type === 'surah');
+                const surahItems = items.filter(item => item.type === 'surah');
                 if (index >= surahItems.length) return;
-                surahItems[index].caption = value;
+                surahItems[index].content = value;
                 savePedomanData();
                 updatePedomanGlobalSaveIndicator(true);
             }, 500);
@@ -5178,25 +5287,29 @@
 
         function deletePedomanSurahItem(folderId, index) {
             const items = pedomanContents[folderId] || [];
-            const surahItems = items.filter(i => i.type === 'surah');
+            const surahItems = items.filter(item => item.type === 'surah');
             if (index >= surahItems.length) return;
-            const itemId = surahItems[index].id;
-            const idxInAll = items.findIndex(i => i.id === itemId);
-            if (idxInAll !== -1) {
-                items.splice(idxInAll, 1);
-                savePedomanData();
-                renderPedomanSurahGallery(folderId);
-                showPedomanToast('Item surah dihapus', 'fa-trash-alt', '#f59e0b');
-            }
+            const targetId = surahItems[index].id;
+            const newItems = items.filter(item => item.id !== targetId);
+            pedomanContents[folderId] = newItems;
+            savePedomanData();
+            renderPedomanSurahGallery(folderId);
+            showPedomanToast('Item surah dihapus', 'fa-trash-alt', '#f59e0b');
         }
 
         function addPedomanSurahImages(folderId, files) {
-            const items = pedomanContents[folderId] || [];
+            if (!pedomanContents[folderId]) pedomanContents[folderId] = [];
             let loaded = 0;
             for (const file of files) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    items.push({ id: generatePedomanId(), type: 'surah', image: e.target.result, caption: '' });
+                    pedomanContents[folderId].push({
+                        id: 'pc' + Date.now() + '_' + Math.random().toString(36).slice(2, 5),
+                        type: 'surah',
+                        name: file.name,
+                        dataUrl: e.target.result,
+                        content: ''
+                    });
                     loaded++;
                     if (loaded === files.length) {
                         savePedomanData();
@@ -5233,8 +5346,9 @@
                         const editor = document.getElementById(editorId);
                         const type = tabId === 'tab-asbab' ? 'asbab' : 'makna';
                         const item = items.find(i => i.type === type);
-                        if (editor && item && editor.innerHTML !== (item.content || '')) {
-                            editor.innerHTML = item.content || '';
+                        const content = item ? (item.content || '') : '';
+                        if (editor && editor.innerHTML !== content) {
+                            editor.innerHTML = content;
                             bindPedomanEditorImageInteractions(editor);
                         } else if (editor) {
                             bindPedomanEditorImageInteractions(editor);
@@ -5256,18 +5370,25 @@
 
         function savePedomanEditorContent(editorName) {
             if (!currentPedomanFolderId) return;
-            const items = pedomanContents[currentPedomanFolderId] || [];
-            const type = editorName === 'asbab' ? 'asbab' : 'makna';
             const editor = document.getElementById('pedoman-' + editorName + '-editor');
             if (!editor) return;
             editor.querySelectorAll('.img-wrap').forEach(w => { if (!w.querySelector('img')) w.remove(); });
             const content = editor.innerHTML.trim();
-            let item = items.find(i => i.type === type);
-            if (!item) {
-                item = { id: generatePedomanId(), type, content: '' };
-                items.push(item);
+            const items = pedomanContents[currentPedomanFolderId] || [];
+            const type = editorName === 'asbab' ? 'asbab' : 'makna';
+            let existing = items.find(i => i.type === type);
+            if (existing) {
+                existing.content = content;
+            } else {
+                items.push({
+                    id: 'pc' + Date.now() + '_' + Math.random().toString(36).slice(2, 5),
+                    type: type,
+                    name: type === 'asbab' ? 'Asbabun Nuzul' : 'Makna Surah',
+                    content: content,
+                    dataUrl: ''
+                });
             }
-            item.content = content;
+            pedomanContents[currentPedomanFolderId] = items;
             savePedomanData();
             updatePedomanGlobalSaveIndicator(true);
         }
@@ -5295,6 +5416,7 @@
             });
         }
 
+        // ===== DRAG & DROP IMAGE =====
         let pedomanDragData = null;
 
         function makePedomanImageDraggable(wrap) {
@@ -5514,6 +5636,7 @@
                 '#6C3CE1');
         }
 
+        // ===== MODAL PEDOMAN =====
         let pedomanModalCallback = null;
 
         function openPedomanModal(title, desc, confirmText, callback) {
@@ -5546,6 +5669,7 @@
                 });
         }
 
+        // ===== STARS & NEBULA =====
         function createPedomanStars() {
             const bg = document.getElementById('galaxy-bg');
             if (!bg) return;
